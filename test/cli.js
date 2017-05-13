@@ -24,9 +24,10 @@ buster.testCase('cli - response2definition', {
   },
   'should contain response2definition command and delegate to SwaggyJenkinsCli responseToDefinition when exec is called': function (done) {
     this.stub(bag, 'command', function (base, actions) {
-      actions.commands.response2definition.action('somedir', { _name: 'response2definition', parent: { apiType: 'remote-access', reporter: 'console,file', outFile: '/tmp/definitions.yml' } });
+      actions.commands.response2definition.action('somedir', { _name: 'response2definition', parent: { apiType: 'remote-access', reporter: 'console,file', outFile: 'someoutfile.yml' } });
     });
-    this.stub(SwaggyJenkinsCli.prototype, 'responseToDefinition', function ({}, cb) {
+    var opts = { inputPath: 'somedir', reporter: 'console,file', outFile: 'someoutfile.yml' };
+    this.stub(SwaggyJenkinsCli.prototype, 'responseToDefinition', function (opts, cb) {
       assert.equals(typeof cb, 'function');
       done();
     });
