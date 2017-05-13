@@ -1,0 +1,20 @@
+- params:
+    swaggyjenkins: ../../../../../bin/swaggy-jenkins
+
+- description: Command help should display help information
+  command: '{swaggyjenkins} --help'
+  exitcode: 0
+  output: 'Usage: swaggy-jenkins'
+
+- description: Command response2definition should display generated OpenAPI definitions on the console
+  command: '{swaggyjenkins} response2definition ../../../../../examples/responses/getComputer.json --api-type remote-access'
+  exitcode: 0
+  output: Reading response file ../../../../../examples/responses/getComputer.json
+
+- description: Command response2definition should generate definitions file with custom name
+  command: '{swaggyjenkins} response2definition ../../../../../examples/responses/getComputer.json --api-type remote-access --reporter file --out-file ../.bob/test-integration/somedefinitions.yml'
+  exitcode: 0
+
+- description: Ensure custom definitions file is generated
+  command: 'file ../.bob/test-integration/somedefinitions.yml'
+  exitcode: 0

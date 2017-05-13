@@ -1,0 +1,7 @@
+- params:
+    swaggyjenkins: ../../../../../bin/swaggy-jenkins
+
+- description: Command response2definition should display error when input file does not exist
+  command: '{swaggyjenkins} response2definition someinexistingfile.json'
+  exitcode: 1
+  output: 'Error: ENOENT: no such file or directory'
