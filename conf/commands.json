@@ -1,0 +1,22 @@
+{
+  "options": [
+    { "arg": "--api-type <apiType>", "desc": "Jenkins API type: remote-access (default)" }
+  ],
+  "commands": {
+    "response2definition": {
+      "desc": "Generate OpenAPI spec definition from Jenkins response JSON payloads",
+      "args": [
+        { "name": "path", "rules": [ "required" ] }
+      ],
+      "options": [
+        { "arg": "-r, --reporter <reporter>", "desc": "Comma separated value of output reporter: console (default), file" },
+        { "arg": "-f, --out-file <outFile>", "desc": "Output file when file reporter is enabled, defaults to definition.yml" }
+      ],
+      "examples": [
+        "swaggy-jenkins response2definition <response_file.json>",
+        "swaggy-jenkins response2definition <response_files_directory>",
+        "swaggy-jenkins response2definition <response_files_directory> --reporter console,file --out-file <definition_file>"
+      ]
+    }
+  }
+}

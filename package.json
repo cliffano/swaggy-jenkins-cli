@@ -1,0 +1,47 @@
+{
+  "name": "swaggy-jenkins-cli",
+  "description": "Utility tool for Swaggy Jenkins library",
+  "keywords": [
+    "jenkins",
+    "swagger",
+    "openapi"
+  ],
+  "version": "0.0.1",
+  "homepage": "http://github.com/cliffano/swaggy-jenkins-cli",
+  "author": "Cliffano Subagio <blah@cliffano.com> (http://blog.cliffano.com)",
+  "contributors": [
+    "All contributors (https://github.com/cliffano/swaggy-jenkins-cli/graphs/contributors)"
+  ],
+  "main": "./lib/jenkins",
+  "bin": {
+    "swaggy-jenkins": "./bin/swaggy-jenkins"
+  },
+  "preferGlobal": true,
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/cliffano/swaggy-jenkins-cli.git"
+  },
+  "bugs": {
+    "url": "http://github.com/cliffano/swaggy-jenkins-cli/issues"
+  },
+  "directories": {
+    "bin": "./bin",
+    "lib": "./lib",
+    "test": "./test"
+  },
+  "dependencies": {
+    "bagofcli": "^1.0.0",
+    "colors": "^1.1.2",
+    "node-yaml": "^3.0.3"
+  },
+  "devDependencies": {
+    "buster-node": "^0.7.1",
+    "proxyquire": "^1.7.10",
+    "referee": "^1.2.0"
+  },
+  "scripts": {},
+  "engines": {
+    "node": ">= 4.0.0"
+  },
+  "license": "MIT"
+}
