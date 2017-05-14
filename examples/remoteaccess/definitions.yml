@@ -71,16 +71,28 @@ Hudson$MasterComputer:
       type: string
     iconClassName:
       type: string
+    idle:
+      type: boolean
+    jnlpAgent:
+      type: boolean
+    launchSupported:
+      type: boolean
     loadStatistics:
       $ref: '#/definitions/Label$1'
+    manualLaunchAllowed:
+      type: boolean
     monitorData:
       $ref: '#/definitions/Hudson$MasterComputer_monitorData'
     numExecutors:
       type: integer
+    offline:
+      type: boolean
     offlineCause:
       type: string
     offlineCauseReason:
       type: string
+    temporarilyOffline:
+      type: boolean
 ComputerSet:
   type: object
   properties:
@@ -151,10 +163,16 @@ Hudson:
         $ref: '#/definitions/FreeStyleProject'
     primaryView:
       $ref: '#/definitions/AllView'
+    quietingDown:
+      type: boolean
     slaveAgentPort:
       type: integer
     unlabeledLoad:
       $ref: '#/definitions/UnlabeledLoadStatistics'
+    useCrumbs:
+      type: boolean
+    useSecurity:
+      type: boolean
     views:
       type: array
       items:
@@ -188,12 +206,18 @@ Queue$BlockedItem:
       type: array
       items:
         $ref: '#/definitions/CauseAction'
+    blocked:
+      type: boolean
+    buildable:
+      type: boolean
     id:
       type: integer
     inQueueSince:
       type: integer
     params:
       type: string
+    stuck:
+      type: boolean
     task:
       $ref: '#/definitions/FreeStyleProject'
     url:
