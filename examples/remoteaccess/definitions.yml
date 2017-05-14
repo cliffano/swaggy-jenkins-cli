@@ -1,0 +1,213 @@
+Label$1:
+  type: object
+  properties:
+    _class:
+      type: string
+SwapSpaceMonitor$MemoryUsage2:
+  type: object
+  properties:
+    _class:
+      type: string
+    availablePhysicalMemory:
+      type: integer
+    availableSwapSpace:
+      type: integer
+    totalPhysicalMemory:
+      type: integer
+    totalSwapSpace:
+      type: integer
+DiskSpaceMonitorDescriptor$DiskSpace:
+  type: object
+  properties:
+    _class:
+      type: string
+    timestamp:
+      type: integer
+    path:
+      type: string
+    size:
+      type: integer
+ResponseTimeMonitor$Data:
+  type: object
+  properties:
+    _class:
+      type: string
+    timestamp:
+      type: integer
+    average:
+      type: integer
+ClockDifference:
+  type: object
+  properties:
+    _class:
+      type: string
+    diff:
+      type: integer
+Hudson$MasterComputer_monitorData:
+  type: object
+  properties:
+    hudson.node_monitors.SwapSpaceMonitor:
+      $ref: '#/definitions/SwapSpaceMonitor$MemoryUsage2'
+    hudson.node_monitors.TemporarySpaceMonitor:
+      $ref: '#/definitions/DiskSpaceMonitorDescriptor$DiskSpace'
+    hudson.node_monitors.DiskSpaceMonitor:
+      $ref: '#/definitions/DiskSpaceMonitorDescriptor$DiskSpace'
+    hudson.node_monitors.ArchitectureMonitor:
+      type: string
+    hudson.node_monitors.ResponseTimeMonitor:
+      $ref: '#/definitions/ResponseTimeMonitor$Data'
+    hudson.node_monitors.ClockMonitor:
+      $ref: '#/definitions/ClockDifference'
+    _class:
+      type: string
+Hudson$MasterComputer:
+  type: object
+  properties:
+    _class:
+      type: string
+    displayName:
+      type: string
+    icon:
+      type: string
+    iconClassName:
+      type: string
+    loadStatistics:
+      $ref: '#/definitions/Label$1'
+    monitorData:
+      $ref: '#/definitions/Hudson$MasterComputer_monitorData'
+    numExecutors:
+      type: integer
+    offlineCause:
+      type: string
+    offlineCauseReason:
+      type: string
+ComputerSet:
+  type: object
+  properties:
+    _class:
+      type: string
+    busyExecutors:
+      type: integer
+    computer:
+      type: array
+      items:
+        $ref: '#/definitions/Hudson$MasterComputer'
+    displayName:
+      type: string
+    totalExecutors:
+      type: integer
+DefaultCrumbIssuer:
+  type: object
+  properties:
+    _class:
+      type: string
+    crumb:
+      type: string
+    crumbRequestField:
+      type: string
+FreeStyleProject:
+  type: object
+  properties:
+    _class:
+      type: string
+    name:
+      type: string
+    url:
+      type: string
+    color:
+      type: string
+AllView:
+  type: object
+  properties:
+    _class:
+      type: string
+    name:
+      type: string
+    url:
+      type: string
+UnlabeledLoadStatistics:
+  type: object
+  properties:
+    _class:
+      type: string
+Hudson:
+  type: object
+  properties:
+    _class:
+      type: string
+    mode:
+      type: string
+    nodeDescription:
+      type: string
+    nodeName:
+      type: string
+    numExecutors:
+      type: integer
+    description:
+      type: string
+    jobs:
+      type: array
+      items:
+        $ref: '#/definitions/FreeStyleProject'
+    primaryView:
+      $ref: '#/definitions/AllView'
+    slaveAgentPort:
+      type: integer
+    unlabeledLoad:
+      $ref: '#/definitions/UnlabeledLoadStatistics'
+    views:
+      type: array
+      items:
+        $ref: '#/definitions/AllView'
+Cause$UserIdCause:
+  type: object
+  properties:
+    _class:
+      type: string
+    shortDescription:
+      type: string
+    userId:
+      type: string
+    userName:
+      type: string
+CauseAction:
+  type: object
+  properties:
+    _class:
+      type: string
+    causes:
+      type: array
+      items:
+        $ref: '#/definitions/Cause$UserIdCause'
+Queue$BlockedItem:
+  type: object
+  properties:
+    _class:
+      type: string
+    actions:
+      type: array
+      items:
+        $ref: '#/definitions/CauseAction'
+    id:
+      type: integer
+    inQueueSince:
+      type: integer
+    params:
+      type: string
+    task:
+      $ref: '#/definitions/FreeStyleProject'
+    url:
+      type: string
+    why:
+      type: string
+    buildableStartMilliseconds:
+      type: integer
+Queue:
+  type: object
+  properties:
+    _class:
+      type: string
+    items:
+      type: array
+      items:
+        $ref: '#/definitions/Queue$BlockedItem'
