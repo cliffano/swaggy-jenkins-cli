@@ -12,7 +12,7 @@
   output: Reading response file ../../../../../examples/remoteaccess/responses/getComputer.json
 
 - description: Command response2definition should generate definitions file with custom name
-  command: '{swaggyjenkins} response2definition ../../../../../examples/remoteaccess/responses/getComputer.json --api-type remote-access --reporter file --out-file ../.bob/test-integration/somedefinitions.yml'
+  command: '{swaggyjenkins} response2definition ../../../../../examples/remoteaccess/responses/getComputer.json --api-type remote-access --reporter file --out-file ../../../../../.bob/test-integration/somedefinitions.yml'
   exitcode: 0
 
 - description: Ensure custom definitions file is generated
