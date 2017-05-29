@@ -1,57 +1,89 @@
-{
+{  
    "_class":"hudson.model.ComputerSet",
-   "busyExecutors":0,
-   "computer":[
-      {
+   "busyExecutors":1,
+   "computer":[  
+      {  
          "_class":"hudson.model.Hudson$MasterComputer",
-         "actions":[
+         "actions":[  
 
          ],
          "displayName":"master",
-         "executors":[
-            {
+         "executors":[  
+            {  
+               "currentExecutable":{  
+                  "_class":"hudson.model.FreeStyleBuild",
+                  "number":9,
+                  "url":"http://localhost:8080/job/somejob/9/"
+               },
+               "currentWorkUnit":{  
 
-            },
-            {
-
+               },
+               "idle":false,
+               "likelyStuck":false,
+               "number":1,
+               "progress":24
             }
          ],
          "icon":"computer.png",
          "iconClassName":"icon-computer",
-         "idle":true,
+         "idle":false,
          "jnlpAgent":false,
          "launchSupported":true,
-         "loadStatistics":{
-            "_class":"hudson.model.Label$1"
+         "loadStatistics":{  
+            "_class":"hudson.model.Label$1",
+            "availableExecutors":{  
+
+            },
+            "busyExecutors":{  
+
+            },
+            "connectingExecutors":{  
+
+            },
+            "definedExecutors":{  
+
+            },
+            "idleExecutors":{  
+
+            },
+            "onlineExecutors":{  
+
+            },
+            "queueLength":{  
+
+            },
+            "totalExecutors":{  
+
+            }
          },
          "manualLaunchAllowed":true,
-         "monitorData":{
-            "hudson.node_monitors.SwapSpaceMonitor":{
+         "monitorData":{  
+            "hudson.node_monitors.SwapSpaceMonitor":{  
                "_class":"hudson.node_monitors.SwapSpaceMonitor$MemoryUsage2",
                "availablePhysicalMemory":-1,
-               "availableSwapSpace":1518338048,
+               "availableSwapSpace":1289748480,
                "totalPhysicalMemory":-1,
-               "totalSwapSpace":9663676416
+               "totalSwapSpace":2147483648
             },
-            "hudson.node_monitors.TemporarySpaceMonitor":{
+            "hudson.node_monitors.TemporarySpaceMonitor":{  
                "_class":"hudson.node_monitors.DiskSpaceMonitorDescriptor$DiskSpace",
-               "timestamp":1494382487933,
+               "timestamp":1496017207129,
                "path":"/private/var/folders/01/c8x627616lj7sfjxbncx46j40000gn/T",
-               "size":6115172352
+               "size":6266249216
             },
-            "hudson.node_monitors.DiskSpaceMonitor":{
+            "hudson.node_monitors.DiskSpaceMonitor":{  
                "_class":"hudson.node_monitors.DiskSpaceMonitorDescriptor$DiskSpace",
-               "timestamp":1494382486707,
+               "timestamp":1496017207127,
                "path":"/Users/cliffano/.jenkins",
-               "size":6115172352
+               "size":6266249216
             },
             "hudson.node_monitors.ArchitectureMonitor":"Mac OS X (x86_64)",
-            "hudson.node_monitors.ResponseTimeMonitor":{
+            "hudson.node_monitors.ResponseTimeMonitor":{  
                "_class":"hudson.node_monitors.ResponseTimeMonitor$Data",
-               "timestamp":1494382486679,
+               "timestamp":1496017207114,
                "average":0
             },
-            "hudson.node_monitors.ClockMonitor":{
+            "hudson.node_monitors.ClockMonitor":{  
                "_class":"hudson.util.ClockDifference",
                "diff":0
             }
@@ -60,7 +92,7 @@
          "offline":false,
          "offlineCause":null,
          "offlineCauseReason":"",
-         "oneOffExecutors":[
+         "oneOffExecutors":[  
 
          ],
          "temporarilyOffline":false

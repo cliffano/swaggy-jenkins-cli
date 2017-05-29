@@ -1,3 +1,27 @@
+hudsonmodelFreeStyleBuild:
+  type: object
+  properties:
+    _class:
+      type: string
+    number:
+      type: integer
+    url:
+      type: string
+hudsonmodelHudsonMasterComputerexecutors:
+  type: object
+  properties:
+    currentExecutable:
+      $ref: '#/definitions/hudsonmodelFreeStyleBuild'
+    idle:
+      type: boolean
+    likelyStuck:
+      type: boolean
+    number:
+      type: integer
+    progress:
+      type: integer
+    _class:
+      type: string
 hudsonmodelLabel1:
   type: object
   properties:
@@ -67,6 +91,10 @@ hudsonmodelHudsonMasterComputer:
       type: string
     displayName:
       type: string
+    executors:
+      type: array
+      items:
+        $ref: '#/definitions/hudsonmodelHudsonMasterComputerexecutors'
     icon:
       type: string
     iconClassName:
@@ -117,6 +145,11 @@ hudsonsecuritycsrfDefaultCrumbIssuer:
       type: string
     crumbRequestField:
       type: string
+hudsonmodelHudsonassignedLabels:
+  type: object
+  properties:
+    _class:
+      type: string
 hudsonmodelFreeStyleProject:
   type: object
   properties:
@@ -147,6 +180,10 @@ hudsonmodelHudson:
   properties:
     _class:
       type: string
+    assignedLabels:
+      type: array
+      items:
+        $ref: '#/definitions/hudsonmodelHudsonassignedLabels'
     mode:
       type: string
     nodeDescription:
