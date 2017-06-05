@@ -1,0 +1,86 @@
+{  
+   "_class":"hudson.model.FreeStyleProject",
+   "actions":[  
+      {  
+
+      },
+      {  
+
+      },
+      {  
+
+      },
+      {  
+         "_class":"com.cloudbees.plugins.credentials.ViewCredentialsAction"
+      }
+   ],
+   "description":"",
+   "displayName":"somejob",
+   "displayNameOrNull":null,
+   "fullDisplayName":"somejob",
+   "fullName":"somejob",
+   "name":"somejob",
+   "url":"http://localhost:8080/job/somejob/",
+   "buildable":true,
+   "builds":[  
+      {  
+         "_class":"hudson.model.FreeStyleBuild",
+         "number":1,
+         "url":"http://localhost:8080/job/somejob/1/"
+      }
+   ],
+   "color":"blue",
+   "firstBuild":{  
+      "_class":"hudson.model.FreeStyleBuild",
+      "number":1,
+      "url":"http://localhost:8080/job/somejob/1/"
+   },
+   "healthReport":[  
+      {  
+         "description":"Build stability: No recent builds failed.",
+         "iconClassName":"icon-health-80plus",
+         "iconUrl":"health-80plus.png",
+         "score":100
+      }
+   ],
+   "inQueue":false,
+   "keepDependencies":false,
+   "lastBuild":{  
+      "_class":"hudson.model.FreeStyleBuild",
+      "number":12,
+      "url":"http://localhost:8080/job/somejob/12/"
+   },
+   "lastCompletedBuild":{  
+      "_class":"hudson.model.FreeStyleBuild",
+      "number":12,
+      "url":"http://localhost:8080/job/somejob/12/"
+   },
+   "lastFailedBuild":null,
+   "lastStableBuild":{  
+      "_class":"hudson.model.FreeStyleBuild",
+      "number":12,
+      "url":"http://localhost:8080/job/somejob/12/"
+   },
+   "lastSuccessfulBuild":{  
+      "_class":"hudson.model.FreeStyleBuild",
+      "number":12,
+      "url":"http://localhost:8080/job/somejob/12/"
+   },
+   "lastUnstableBuild":null,
+   "lastUnsuccessfulBuild":null,
+   "nextBuildNumber":13,
+   "property":[  
+
+   ],
+   "queueItem":null,
+   "concurrentBuild":false,
+   "downstreamProjects":[  
+
+   ],
+   "scm":{  
+      "_class":"hudson.scm.NullSCM"
+   },
+   "upstreamProjects":[  
+
+   ]
+}

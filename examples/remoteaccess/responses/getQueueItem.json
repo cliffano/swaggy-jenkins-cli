@@ -1,0 +1,36 @@
+{
+   "_class":"hudson.model.Queue$LeftItem",
+   "actions":[
+      {
+         "_class":"hudson.model.CauseAction",
+         "causes":[
+            {
+               "_class":"hudson.model.Cause$UserIdCause",
+               "shortDescription":"Started by user Some User",
+               "userId":"someuser",
+               "userName":"Some User"
+            }
+         ]
+      }
+   ],
+   "blocked":false,
+   "buildable":false,
+   "id":11,
+   "inQueueSince":1496631627494,
+   "params":"",
+   "stuck":false,
+   "task":{
+      "_class":"hudson.model.FreeStyleProject",
+      "name":"somejob",
+      "url":"http://localhost:8080/job/somejob/",
+      "color":"blue_anime"
+   },
+   "url":"queue/item/11/",
+   "why":null,
+   "cancelled":false,
+   "executable":{
+      "_class":"hudson.model.FreeStyleBuild",
+      "number":5,
+      "url":"http://localhost:8080/job/somejob/5/"
+   }
+}

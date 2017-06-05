@@ -7,6 +7,38 @@ hudsonmodelFreeStyleBuild:
       type: integer
     url:
       type: string
+    actions:
+      type: array
+      items:
+        $ref: '#/definitions/hudsonmodelCauseAction'
+    building:
+      type: boolean
+    description:
+      type: string
+    displayName:
+      type: string
+    duration:
+      type: integer
+    estimatedDuration:
+      type: integer
+    executor:
+      type: string
+    fullDisplayName:
+      type: string
+    id:
+      type: string
+    keepLog:
+      type: boolean
+    queueId:
+      type: integer
+    result:
+      type: string
+    timestamp:
+      type: integer
+    builtOn:
+      type: string
+    changeSet:
+      $ref: '#/definitions/hudsonscmEmptyChangeLogSet'
 hudsonmodelHudsonMasterComputerexecutors:
   type: object
   properties:
@@ -309,6 +341,13 @@ hudsonmodelCauseAction:
       type: array
       items:
         $ref: '#/definitions/hudsonmodelCauseUserIdCause'
+hudsonscmEmptyChangeLogSet:
+  type: object
+  properties:
+    _class:
+      type: string
+    kind:
+      type: string
 hudsonmodelQueueBlockedItem:
   type: object
   properties:
@@ -347,3 +386,34 @@ hudsonmodelQueue:
       type: array
       items:
         $ref: '#/definitions/hudsonmodelQueueBlockedItem'
+hudsonmodelQueueLeftItem:
+  type: object
+  properties:
+    _class:
+      type: string
+    actions:
+      type: array
+      items:
+        $ref: '#/definitions/hudsonmodelCauseAction'
+    blocked:
+      type: boolean
+    buildable:
+      type: boolean
+    id:
+      type: integer
+    inQueueSince:
+      type: integer
+    params:
+      type: string
+    stuck:
+      type: boolean
+    task:
+      $ref: '#/definitions/hudsonmodelFreeStyleProject'
+    url:
+      type: string
+    why:
+      type: string
+    cancelled:
+      type: boolean
+    executable:
+      $ref: '#/definitions/hudsonmodelFreeStyleBuild'

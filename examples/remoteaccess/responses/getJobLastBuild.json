@@ -1,0 +1,59 @@
+{
+   "_class":"hudson.model.FreeStyleBuild",
+   "actions":[
+      {
+         "_class":"hudson.model.CauseAction",
+         "causes":[
+            {
+               "_class":"hudson.model.Cause$UserIdCause",
+               "shortDescription":"Started by user Some User",
+               "userId":"someuser",
+               "userName":"Some User"
+            },
+            {
+               "_class":"hudson.model.Cause$UserIdCause",
+               "shortDescription":"Started by user Some User",
+               "userId":"someuser",
+               "userName":"Some User"
+            }
+         ]
+      },
+      {
+         "_class":"jenkins.metrics.impl.TimeInQueueAction"
+      },
+      {
+
+      },
+      {
+
+      }
+   ],
+   "artifacts":[
+
+   ],
+   "building":false,
+   "description":null,
+   "displayName":"#12",
+   "duration":250105,
+   "estimatedDuration":250114,
+   "executor":null,
+   "fullDisplayName":"somejob #12",
+   "id":"12",
+   "keepLog":false,
+   "number":12,
+   "queueId":4,
+   "result":"SUCCESS",
+   "timestamp":1496028293937,
+   "url":"http://localhost:8080/job/somejob/12/",
+   "builtOn":"",
+   "changeSet":{
+      "_class":"hudson.scm.EmptyChangeLogSet",
+      "items":[
+
+      ],
+      "kind":null
+   },
+   "culprits":[
+
+   ]
+}
