@@ -16,5 +16,5 @@
   exitcode: 0
 
 - description: Ensure custom definitions file is generated
-  command: 'file ../.bob/test-integration/somedefinitions.yml'
+  command: 'file ../../../../../.bob/test-integration/somedefinitions.yml'
   exitcode: 0
