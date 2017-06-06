@@ -417,3 +417,18 @@ hudsonmodelQueueLeftItem:
       type: boolean
     executable:
       $ref: '#/definitions/hudsonmodelFreeStyleBuild'
+hudsonmodelListView:
+  type: object
+  properties:
+    _class:
+      type: string
+    description:
+      type: string
+    jobs:
+      type: array
+      items:
+        $ref: '#/definitions/hudsonmodelFreeStyleProject'
+    name:
+      type: string
+    url:
+      type: string

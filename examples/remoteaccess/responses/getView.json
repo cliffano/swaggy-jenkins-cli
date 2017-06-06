@@ -1,0 +1,17 @@
+{
+   "_class":"hudson.model.ListView",
+   "description":null,
+   "jobs":[
+      {
+         "_class":"hudson.model.FreeStyleProject",
+         "name":"somejob",
+         "url":"http://localhost:8080/job/somejob/",
+         "color":"blue"
+      }
+   ],
+   "name":"someview",
+   "property":[
+
+   ],
+   "url":"http://localhost:8080/view/someview/"
+}
