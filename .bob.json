@@ -17,8 +17,5 @@
   },
   "doc": {
     "type": "dox-foundation"
-  },
-  "site": {
-    "type": "buildbranch"
   }
 }
