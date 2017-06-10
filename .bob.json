@@ -16,6 +16,6 @@
     "type": "cmdt"
   },
   "doc": {
-    "type": "dox-foundation"
+    "type": "jsdoc"
   }
 }
