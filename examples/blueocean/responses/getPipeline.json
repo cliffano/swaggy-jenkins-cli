@@ -1,0 +1,31 @@
+{
+  "organization" : "jenkins",
+  "name" : "pipeline1",
+  "displayName": "pipeline1",
+  "fullName": "pipeline1",
+  "weatherScore": 100,
+  "estimatedDurationInMillis": 20264,
+  "latestRun": {
+      "changeSet": [],
+      "artifacts": [
+          {
+              "name": "fizz",
+              "size": 8,
+              "url": "/jenkins/job/pipeline1/1/artifact/dir/fizz"
+          }
+      ],
+      "durationInMillis": 20264,
+      "estimatedDurationInMillis" : 567,
+      "enQueueTime": "2016-04-11T17:44:28.342+1000",
+      "endTime": "2016-04-11T17:44:48.608+1000",
+      "id": "3",
+      "organization": "jenkins",
+      "pipeline": "mypipe1",
+      "result": "SUCCESS",
+      "runSummary": "stable",
+      "startTime": "2016-04-11T17:44:28.344+1000",
+      "state": "FINISHED",
+      "type": "WorkflowRun",
+      "commitId": null
+    }
+}
