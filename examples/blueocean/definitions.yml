@@ -1,4 +1,4 @@
-examplesblueoceanresponsesgetPipelinejson_latestRunartifacts:
+getPipeline_latestRunartifacts:
   type: object
   properties:
     name:
@@ -9,14 +9,13 @@ examplesblueoceanresponsesgetPipelinejson_latestRunartifacts:
       type: string
     _class:
       type: string
-examplesblueoceanresponsesgetPipelinejson_latestRun:
+getPipeline_latestRun:
   type: object
   properties:
     artifacts:
       type: array
       items:
-        $ref: >-
-          #/definitions/examplesblueoceanresponsesgetPipelinejson_latestRunartifacts
+        $ref: '#/definitions/getPipeline_latestRunartifacts'
     durationInMillis:
       type: integer
     estimatedDurationInMillis:
@@ -45,7 +44,7 @@ examplesblueoceanresponsesgetPipelinejson_latestRun:
       type: string
     _class:
       type: string
-examplesblueoceanresponsesgetPipelinejson:
+getPipeline:
   type: object
   properties:
     organization:
@@ -61,6 +60,6 @@ examplesblueoceanresponsesgetPipelinejson:
     estimatedDurationInMillis:
       type: integer
     latestRun:
-      $ref: '#/definitions/examplesblueoceanresponsesgetPipelinejson_latestRun'
+      $ref: '#/definitions/getPipeline_latestRun'
     __sourcePath:
       type: string
