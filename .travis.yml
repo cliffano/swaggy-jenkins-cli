@@ -15,5 +15,6 @@ before_install:
   - npm install -g bob coveralls --loglevel error
 script:
   - DEBUG=canihaz bob build
+  - make examples-remoteaccess examples-blueocean
 after_success:
   - cat .bob/coverage/buster-istanbul/lcov.info | coveralls
