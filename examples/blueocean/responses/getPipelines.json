@@ -1,0 +1,11 @@
+[
+   {
+      "_class":"swaggyjenkins.Pipeline",
+      "organization":"jenkins",
+      "name":"pipeline1",
+      "displayName":"pipeline1",
+      "fullName":"pipeline1",
+      "weatherScore":100,
+      "estimatedDurationInMillis":280
+   }
+]

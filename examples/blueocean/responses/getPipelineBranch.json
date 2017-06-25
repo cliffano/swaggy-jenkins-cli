@@ -1,0 +1,36 @@
+{
+   "_class":"io.jenkins.blueocean.rest.impl.pipeline.BranchImpl",
+   "_links":{
+   },
+   "actions":[
+   ],
+   "displayName":"feature/ux-1",
+   "estimatedDurationInMillis":1689,
+   "fullDisplayName":"p/master",
+   "fullName":"p/master",
+   "latestRun":{
+   },
+   "name":"feature%2Fux-1",
+   "organization":"jenkins",
+   "parameters":[
+      {
+         "_class":"hudson.model.StringParameterDefinition",
+         "defaultParameterValue":{
+            "_class":"hudson.model.StringParameterValue",
+            "name":"param1",
+            "value":"xyz"
+         },
+         "description":"string param",
+         "name":"param1",
+         "type":"StringParameterDefinition"
+      }
+   ],
+   "permissions":{
+      "create":true,
+      "read":true,
+      "start":true,
+      "stop":true
+   },
+   "weatherScore":100,
+   "pullRequest":null
+}

@@ -1,0 +1,11 @@
+{
+   "_class":"io.jenkins.blueocean.service.embedded.rest.PipelineImpl",
+   "displayName":"test2",
+   "estimatedDurationInMillis":-1,
+   "fullName":"folder1/folder2/test2",
+   "latestRun":null,
+   "name":"test2",
+   "fullName":"test2",
+   "organization":"jenkins",
+   "weatherScore":100
+}

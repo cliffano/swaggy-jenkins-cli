@@ -1,0 +1,19 @@
+{
+   "displayName":"p",
+   "estimatedDurationInMillis":280,
+   "latestRun":null,
+   "name":"p",
+   "organization":"jenkins",
+   "weatherScore":100,
+   "branchNames":[
+      "feature2",
+      "master",
+      "feature1"
+   ],
+   "numberOfFailingBranches":0,
+   "numberOfFailingPullRequests":0,
+   "numberOfSuccessfulBranches":0,
+   "numberOfSuccessfulPullRequests":0,
+   "totalNumberOfBranches":3,
+   "totalNumberOfPullRequests":0
+}

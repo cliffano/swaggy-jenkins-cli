@@ -1,0 +1,9 @@
+{
+   "_class":"io.jenkins.blueocean.service.embedded.rest.PipelineFolderImpl",
+   "displayName":"folder1",
+   "fullName":"folder1",
+   "name":"folder1",
+   "organization":"jenkins",
+   "numberOfFolders":1,
+   "numberOfPipelines":1
+}
