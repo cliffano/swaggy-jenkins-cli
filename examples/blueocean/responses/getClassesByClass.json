@@ -1,0 +1,7 @@
+{
+   "classes":[
+      "io.jenkins.blueocean.rest.model.BlueMultiBranchPipeline",
+      "io.jenkins.blueocean.rest.model.BluePipeline",
+      "io.jenkins.blueocean.rest.model.Resource"
+   ]
+}

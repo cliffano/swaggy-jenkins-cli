@@ -1,0 +1,6 @@
+{
+   "_class":"swaggyjenkins.User",
+   "id":"alice",
+   "fullName":"Alice",
+   "email":"alice@example.com"
+}
