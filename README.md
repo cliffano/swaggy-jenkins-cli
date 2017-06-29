@@ -12,7 +12,7 @@ Swaggy Jenkins CLI
 
 Swaggy Jenkins CLI is a utility tool for [Swaggy Jenkins](http://github.com/cliffano/swaggy-jenkins) library.
 
-It's handy for generating OpenAPI definitions YAML from a set of Jenkins response JSON files.
+It's used for generating OpenAPI definitions YAML from a set of Jenkins response JSON files for both [Remote Access API](https://wiki.jenkins.io/display/JENKINS/Remote+access+API) and [Blue Ocean API](https://github.com/jenkinsci/blueocean-plugin/tree/master/blueocean-rest).
 
 Installation
 ------------
@@ -22,7 +22,7 @@ Installation
 Usage
 -----
 
-Generate OpenAPI definitions YAML from a set of [Jenkins Remote Access API](https://wiki.jenkins-ci.org/display/JENKINS/Remote+access+API) response JSON files under a directory:
+Generate OpenAPI definitions YAML from a set of Remote Access API's response JSON files under a directory:
 
     swaggy-jenkins response2definition examples/responses/ --api-type remote-access
 
