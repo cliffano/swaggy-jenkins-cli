@@ -16,6 +16,9 @@
     "type": "cmdt"
   },
   "doc": {
-    "type": "jsdoc"
+    "type": "dox-foundation"
+  },
+  "site": {
+    "type": "buildbranch"
   }
 }
