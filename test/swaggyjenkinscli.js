@@ -33,6 +33,21 @@ buster.testCase('SwaggyJenkinsCli - responseToDefinition', {
       definitionsCb(null, {});
     };
     swaggyJenkinsCli._report = function (result, opts) {
+      assert.equals(opts.inputPath, 'some/input/path');
+    };
+    swaggyJenkinsCli.responseToDefinition({ inputPath: 'some/input/path' }, cb);
+  },
+  'should pass the error when an error occurs': function (done) {
+    function cb(err) {
+      assert.equals(err.message, 'some error');
+      done();
+    }
+    var swaggyJenkinsCli = new SwaggyJenkinsCli('remote-access');
+    swaggyJenkinsCli._readResponseFiles = function (inputPath) {
+      return [];
+    };
+    swaggyJenkinsCli._generateDefinitions = function (responses, definitionsCb) {
+      definitionsCb(new Error('some error'), {});
     };
     swaggyJenkinsCli.responseToDefinition({ inputPath: 'some/input/path' }, cb);
   }
