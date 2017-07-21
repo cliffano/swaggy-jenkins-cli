@@ -1,0 +1,4 @@
+[ 'lib/cli.js',
+  'lib/processor.js',
+  'lib/reporter.js',
+  'lib/swaggyjenkinscli.js' ]

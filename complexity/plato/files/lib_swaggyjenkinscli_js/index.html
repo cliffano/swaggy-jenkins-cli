@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - lib/swaggyjenkinscli.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
+  <link href="../../assets/css/plato.css" rel="stylesheet">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="http://github.com/es-analysis/plato">Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>lib/swaggyjenkinscli.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">76.27</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">96</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">15.92</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">0.53</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">const colors    = require(&#039;colors&#039;);
+const fs        = require(&#039;fs&#039;);
+const p         = require(&#039;path&#039;);
+const processor = require(&#039;./processor&#039;);
+const reporter  = require(&#039;./reporter&#039;);
+const util      = require(&#039;util&#039;);
+
+/**
+ * class SwaggyJenkinsCli
+ *
+ * @param {String} apiType: Jenkins API type, currently only supports &#039;remote-access&#039;
+ */
+function SwaggyJenkinsCli(apiType) {
+  this.apiType = apiType;
+}
+
+/**
+ * Convert Jenkins response JSON to OpenAPI definition YAML.
+ *
+ * @param {Object} opts: optional
+ *   - inputPath: path to directory containing response files, or path to a single response file
+ *   - reporter: an array of reporters, available reporters: console and file
+ *   - outFile: path to output file, used when &#039;file&#039; reporter is set
+ * @param {Function} cb: standard cb(err, result) callback
+ */
+SwaggyJenkinsCli.prototype.responseToDefinition = function (opts, cb) {
+
+  var self = this;
+  function definitionsCb(err, result) {
+    if (!err) {
+      self._report(result, opts);
+    }
+    cb(err);
+  }
+
+  var responses = this._readResponseFiles(opts.inputPath);
+  this._generateDefinitions(responses, definitionsCb);
+};
+
+/**
+ * Read response files and create response objects.
+ *
+ * @param {String} inputPath: input path, either a directory of response files, or a single response file
+ * @return {Array} an array of response objects
+ */
+SwaggyJenkinsCli.prototype._readResponseFiles = function (inputPath) {
+
+  var inputIsDir = fs.lstatSync(inputPath).isDirectory();
+  var files = (inputIsDir) ? fs.readdirSync(inputPath) : [inputPath];
+
+  var responses = [];
+  files.forEach(function (file) {
+    var path = (inputIsDir) ? p.join(inputPath, file) : file;
+    console.log(&#039;Reading response file %s...&#039;.cyan, path);
+    var response = JSON.parse(fs.readFileSync(path, &#039;utf8&#039;));
+    response.__sourcePath = path; // used as definition ID when response object doesn&#039;t have any class
+    responses.push(response);
+  });
+  return responses;
+
+};
+
+/**
+ * Generate definitions from a given set of responses.
+ * Currently supports blue-ocean and remote-access API types.
+ *
+ * @param {Array} responses: an array of response objects
+ * @param {Function} cb: standard cb(err, result) callback
+ */
+SwaggyJenkinsCli.prototype._generateDefinitions = function (responses, cb) {
+  if ([&#039;blue-ocean&#039;, &#039;remote-access&#039;].includes(this.apiType)) {
+    var definitions = {};
+    processor.generateDefinitions(responses, definitions);
+    cb(null, definitions);
+  } else {
+    cb(new Error(util.format(&#039;Unsupported API type %s&#039;, this.apiType)));
+  }
+};
+
+/**
+ * Report generated definitions based on reporter types.
+ *
+ * @param {Object} definitions: generated definitions object
+ * @param {Object} opts: optional
+ *   - reporter: an array of reporters, available reporters: console and file
+ *   - outFile: path to output file, used when &#039;file&#039; reporter is set
+ */
+SwaggyJenkinsCli.prototype._report = function (definitions, opts) {
+
+  opts.reporter.forEach(function (type) {
+    reporter[type](definitions, opts);
+  });
+
+};
+
+module.exports = SwaggyJenkinsCli;</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ cyclomatic }} <br>
+    Length : {{ halstead.length }} <br>
+    Difficulty : {{ halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>

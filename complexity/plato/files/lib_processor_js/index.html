@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - lib/processor.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
+  <link href="../../assets/css/plato.css" rel="stylesheet">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="http://github.com/es-analysis/plato">Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>lib/processor.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">63.01</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">216</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">49.80</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">1.98</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">const p    = require(&#039;path&#039;);
+const slug = require(&#039;slug&#039;);
+const util = require(&#039;util&#039;);
+
+slug.defaults.mode = &#039;rfc3986&#039;;
+slug.defaults.modes.rfc3986 = {
+  replacement: &#039;_&#039;,
+  symbols: true,
+  remove: /\.|dollar/g,
+  lower: false,
+  charmap: slug.charmap,
+  multicharmap: slug.multicharmap
+};
+
+/**
+ * Iterate and process each response based on its root data type.
+ *
+ * @param {Array} responses: an array of responses
+ * @param {Array} definitions: will be populated with definition object
+ */
+function generateDefinitions(responses, definitions) {
+  responses.forEach(function(response) {
+    if (Array.isArray(response)) {
+      exports.processArray(response, definitions);
+    } else {
+      exports.processObject(response, definitions);
+    }
+  });
+}
+
+/**
+ * Process a single response object by traversing its properties, each one will
+ * be processed based on its data type.
+ *
+ * @param {Object} response: response object
+ * @param {Object} definitions: the definition generated from the response will
+ * be added to this definitions object
+ */
+function processObject(response, definitions) {
+  if (!response._class) {
+    response._class = p.basename(response.__sourcePath, p.extname(response.__sourcePath));
+    console.warn(&#039;Setting placeholder _class %s -  value is a classless object&#039;, response._class);
+  }
+
+  var definitionId = slug(response._class);
+  console.log(&#039;Constructing definition %s...&#039;.green, definitionId);
+
+  var definition = {
+    type: &#039;object&#039;,
+    properties: {},
+    id: definitionId
+  };
+
+  Object.keys(response).forEach(function (key) {
+    if ([&#039;__sourcePath&#039;, &#039;_class&#039;].indexOf(key) !== -1) {
+      return;
+    }
+    value = response[key];
+    console.log(&#039;Processing property %s&#039;.grey, key);
+    var opts = {};
+    if (value === null) {
+      exports._processNullProperty(key, value, definition, definitions, opts);
+    } else if (typeof value === &#039;string&#039;) {
+      exports._processStringProperty(key, value, definition, definitions, opts);
+    } else if (typeof value === &#039;number&#039;) {
+      exports._processNumberProperty(key, value, definition, definitions, opts);
+    } else if (typeof value === &#039;boolean&#039;) {
+      exports._processBooleanProperty(key, value, definition, definitions, opts);
+    } else if (Array.isArray(value)) {
+      opts.parentDefinitionId = definitionId;
+      exports._processArrayProperty(key, value, definition, definitions, opts);
+    } else if (typeof value === &#039;object&#039;) {
+      exports._processObjectProperty(key, value, definition, definitions, opts);
+    } else {
+      exports._processUnknownProperty(key, value, definition, definitions, opts);
+    }
+  });
+
+  delete definition.id;
+  if (definitions[definitionId]) {
+    console.warn(&#039;Definition %s already exists and properties will be merged&#039;.yellow, definitionId);
+    Object.keys(definition.properties).forEach(function (key) {
+      if (!definitions[definitionId].properties[key]) {
+        console.warn(&#039;Merging property %s&#039;.gray, key);
+        definitions[definitionId].properties[key] = definition.properties[key];
+      }
+    });
+  } else {
+    definitions[definitionId] = definition;
+  }
+}
+
+/**
+ * Process a single response array by iterating its properties, each one will
+ * be processed based on its data type.
+ *
+ * @param {Array} response: response array
+ * @param {Object} definitions: the definition generated from the response will
+ * be added to this definitions object
+ */
+function processArray(response, definitions) {
+  var placeholderClass = p.basename(response.__sourcePath, p.extname(response.__sourcePath));
+  var definitionId = slug(placeholderClass);
+  if (response.length &gt; 0) {
+    console.log(&#039;Constructing definition %s...&#039;.green, definitionId);
+
+    var definition = {
+      type: &#039;array&#039;,
+    };
+    if (typeof response[0] === &#039;string&#039;) {
+      definition.items = {
+        type: &#039;string&#039;
+      };
+      definitions[definitionId] = definition;
+    } else if (typeof response[0] === &#039;object&#039;) {
+      if (!response[0]._class) {
+        response[0]._class = placeholderClass + &#039;item&#039;;
+        console.warn(&#039;Setting placeholder _class %s -  value is a classless object&#039;, response[0]._class);
+      }
+      exports.processObject(response[0], definitions);
+      definition.items = {
+        &#039;$ref&#039;: util.format(&#039;#/definitions/%s&#039;, slug(response[0]._class))
+      };
+      definitions[definitionId] = definition;
+    } else {
+      console.error(&#039;Unsupported root array item type %s&#039;.red, typeof response[0]);
+    }
+  } else {
+    console.warn(&#039;Ignoring root array %s - value is empty&#039;.yellow, definitionId);
+  }
+}
+
+function _processStringProperty(key, value, definition, definitions, opts) {
+  definition.properties[key] = {
+    type: &#039;string&#039;
+  };
+}
+
+function _processNullProperty(key, value, definition, definitions, opts) {
+  definition.properties[key] = {
+    type: &#039;string&#039;
+  };
+}
+
+function _processNumberProperty(key, value, definition, definitions, opts) {
+  definition.properties[key] = {
+    type: &#039;integer&#039;
+  };
+}
+
+function _processArrayProperty(key, value, definition, definitions, opts) {
+  if (value.length &gt; 0) {
+    if (typeof value[0] === &#039;string&#039;) {
+      definition.properties[key] = {
+        type: &#039;array&#039;,
+        items: {
+          type: &#039;string&#039;
+        }
+      };
+    } else if (typeof value[0] === &#039;object&#039;) {
+      if (!value[0]._class) {
+        value[0]._class = opts.parentDefinitionId + key;
+        console.warn(&#039;Setting placeholder _class %s -  value is an array with classless first item&#039;, value[0]._class);
+      }
+      var propertyDefinitionId = slug(value[0]._class);
+      definition.properties[key] = {
+        type: &#039;array&#039;,
+        items: {
+          &#039;$ref&#039;: util.format(&#039;#/definitions/%s&#039;, propertyDefinitionId)
+        }
+      };
+      exports.processObject(value[0], definitions);
+    } else {
+      console.error(&#039;Unsupported array item type %s&#039;.red, typeof value[0]);
+    }
+  } else {
+    console.warn(&#039;Ignoring property %s - value is an empty array&#039;.yellow, key);
+  }
+}
+
+function _processObjectProperty(key, value, definition, definitions, opts) {
+  if (Object.keys(value).length &gt; 0) {
+    if (value._class === undefined) {
+      console.warn(&#039;Property %s does not have any _class property&#039;.yellow, key);
+      value._class = util.format(&#039;%s_%s&#039;, definition.id, key);
+    }
+    var propertyDefinitionId = slug(value._class);
+    definition.properties[key] = {
+      &#039;$ref&#039;: util.format(&#039;#/definitions/%s&#039;, propertyDefinitionId)
+    };
+    exports.processObject(value, definitions);
+  } else {
+    console.warn(&#039;Ignoring property %s - a keyless object&#039;.yellow, key);
+  }
+}
+
+function _processBooleanProperty(key, value, definition, definitions, opts) {
+  definition.properties[key] = {
+    type: &#039;boolean&#039;
+  };
+}
+
+function _processUnknownProperty(key, value, definition, definitions, opts) {
+  console.error(&#039;Unsupported property type %s&#039;.red, typeof value);
+}
+
+exports.generateDefinitions     = generateDefinitions;
+exports.processArray            = processArray;
+exports.processObject           = processObject;
+exports._processObjectProperty  = _processObjectProperty;
+exports._processStringProperty  = _processStringProperty;
+exports._processNullProperty    = _processNullProperty;
+exports._processNumberProperty  = _processNumberProperty;
+exports._processArrayProperty   = _processArrayProperty;
+exports._processBooleanProperty = _processBooleanProperty;
+exports._processUnknownProperty = _processUnknownProperty;</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ cyclomatic }} <br>
+    Length : {{ halstead.length }} <br>
+    Difficulty : {{ halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>

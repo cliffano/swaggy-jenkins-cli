@@ -1,0 +1,118 @@
+hudsonmodelFreeStyleBuild:
+  type: object
+  properties:
+    number:
+      type: integer
+    url:
+      type: string
+hudsonmodelHudsonMasterComputerexecutors:
+  type: object
+  properties:
+    currentExecutable:
+      $ref: '#/definitions/hudsonmodelFreeStyleBuild'
+    idle:
+      type: boolean
+    likelyStuck:
+      type: boolean
+    number:
+      type: integer
+    progress:
+      type: integer
+hudsonmodelLabel1:
+  type: object
+  properties: {}
+hudsonnode_monitorsSwapSpaceMonitorMemoryUsage2:
+  type: object
+  properties:
+    availablePhysicalMemory:
+      type: integer
+    availableSwapSpace:
+      type: integer
+    totalPhysicalMemory:
+      type: integer
+    totalSwapSpace:
+      type: integer
+hudsonnode_monitorsDiskSpaceMonitorDescriptorDiskSpace:
+  type: object
+  properties:
+    timestamp:
+      type: integer
+    path:
+      type: string
+    size:
+      type: integer
+hudsonnode_monitorsResponseTimeMonitorData:
+  type: object
+  properties:
+    timestamp:
+      type: integer
+    average:
+      type: integer
+hudsonutilClockDifference:
+  type: object
+  properties:
+    diff:
+      type: integer
+hudsonmodelHudsonMasterComputer_monitorData:
+  type: object
+  properties:
+    hudson.node_monitors.SwapSpaceMonitor:
+      $ref: '#/definitions/hudsonnode_monitorsSwapSpaceMonitorMemoryUsage2'
+    hudson.node_monitors.TemporarySpaceMonitor:
+      $ref: '#/definitions/hudsonnode_monitorsDiskSpaceMonitorDescriptorDiskSpace'
+    hudson.node_monitors.DiskSpaceMonitor:
+      $ref: '#/definitions/hudsonnode_monitorsDiskSpaceMonitorDescriptorDiskSpace'
+    hudson.node_monitors.ArchitectureMonitor:
+      type: string
+    hudson.node_monitors.ResponseTimeMonitor:
+      $ref: '#/definitions/hudsonnode_monitorsResponseTimeMonitorData'
+    hudson.node_monitors.ClockMonitor:
+      $ref: '#/definitions/hudsonutilClockDifference'
+hudsonmodelHudsonMasterComputer:
+  type: object
+  properties:
+    displayName:
+      type: string
+    executors:
+      type: array
+      items:
+        $ref: '#/definitions/hudsonmodelHudsonMasterComputerexecutors'
+    icon:
+      type: string
+    iconClassName:
+      type: string
+    idle:
+      type: boolean
+    jnlpAgent:
+      type: boolean
+    launchSupported:
+      type: boolean
+    loadStatistics:
+      $ref: '#/definitions/hudsonmodelLabel1'
+    manualLaunchAllowed:
+      type: boolean
+    monitorData:
+      $ref: '#/definitions/hudsonmodelHudsonMasterComputer_monitorData'
+    numExecutors:
+      type: integer
+    offline:
+      type: boolean
+    offlineCause:
+      type: string
+    offlineCauseReason:
+      type: string
+    temporarilyOffline:
+      type: boolean
+hudsonmodelComputerSet:
+  type: object
+  properties:
+    busyExecutors:
+      type: integer
+    computer:
+      type: array
+      items:
+        $ref: '#/definitions/hudsonmodelHudsonMasterComputer'
+    displayName:
+      type: string
+    totalExecutors:
+      type: integer
