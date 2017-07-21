@@ -59,6 +59,7 @@ buster.testCase('processor - processObject', {
     });
     this.mockConsole.expects('warn').once().withExactArgs('Setting placeholder _class %s -  value is a classless object', 'file0');
     this.mockConsole.expects('log').once().withExactArgs('Constructing definition %s...'.green, 'file0');
+    this.mockConsole.expects('log').once().withExactArgs('Processing property %s'.grey, '_class');
     this.mockConsole.expects('log').once().withExactArgs('Processing property %s'.grey, 'someNullProperty');
     this.mockConsole.expects('log').once().withExactArgs('Processing property %s'.grey, 'someStringProperty');
     this.mockConsole.expects('log').once().withExactArgs('Processing property %s'.grey, 'someNumberProperty');
@@ -77,7 +78,7 @@ buster.testCase('processor - processObject', {
     response.someUnknownProperty = undefined;
     var definitions = {};
     processor.processObject(response, definitions);
-    assert.equals(count, 7);
+    assert.equals(count, 8);
     assert.equals(definitions.file0.type, 'object');
     assert.equals(definitions.file0.properties, {});
   },
@@ -88,6 +89,7 @@ buster.testCase('processor - processObject', {
       count++;
     });
     this.mockConsole.expects('log').once().withExactArgs('Constructing definition %s...'.green, 'someclass');
+    this.mockConsole.expects('log').once().withExactArgs('Processing property %s'.grey, '_class');
     this.mockConsole.expects('log').once().withExactArgs('Processing property %s'.grey, 'someStringProperty');
     this.mockConsole.expects('warn').once().withExactArgs('Definition %s already exists and properties will be merged'.yellow, 'someclass');
     this.mockConsole.expects('warn').once().withExactArgs('Merging property %s'.gray, 'someStringProperty');
@@ -96,7 +98,7 @@ buster.testCase('processor - processObject', {
     response.someStringProperty = 'string';
     var definitions = { someclass: { type: 'object', properties: { someNumberProperty: 23 }}};
     processor.processObject(response, definitions);
-    assert.equals(count, 1);
+    assert.equals(count, 2);
     assert.equals(definitions.someclass.type, 'object');
     assert.equals(definitions.someclass.properties.someStringProperty, 'string');
     assert.equals(definitions.someclass.properties.someNumberProperty, 23);
@@ -108,6 +110,7 @@ buster.testCase('processor - processObject', {
       count++;
     });
     this.mockConsole.expects('log').once().withExactArgs('Constructing definition %s...'.green, 'someclass');
+    this.mockConsole.expects('log').once().withExactArgs('Processing property %s'.grey, '_class');
     this.mockConsole.expects('log').once().withExactArgs('Processing property %s'.grey, 'someStringProperty');
     this.mockConsole.expects('warn').once().withExactArgs('Definition %s already exists and properties will be merged'.yellow, 'someclass');
     var response = { _class: 'someclass' };
@@ -115,7 +118,7 @@ buster.testCase('processor - processObject', {
     response.someStringProperty = 'string';
     var definitions = { someclass: { type: 'object', properties: { someStringProperty: '23' }}};
     processor.processObject(response, definitions);
-    assert.equals(count, 1);
+    assert.equals(count, 2);
     assert.equals(definitions.someclass.type, 'object');
     assert.equals(definitions.someclass.properties.someStringProperty, '23');
   }
