@@ -4,4 +4,4 @@ examples-remoteaccess:
 examples-blueocean:
 	swaggy-jenkins response2definition examples/blueocean/responses --reporter file --out-file examples/blueocean/definitions.yml
 
-.PHONY: remoteaccess blueocean
+.PHONY: examples-remoteaccess examples-blueocean
