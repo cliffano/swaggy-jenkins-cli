@@ -1,0 +1,26 @@
+{
+   "_class":"swaggyjenkins.PipelineRun",
+   "changeSet":[
+
+   ],
+   "artifacts":[
+      {
+         "name":"fizz",
+         "size":8,
+         "url":"/jenkins/job/pipeline1/1/artifact/dir/fizz"
+      }
+   ],
+   "durationInMillis":841,
+   "estimatedDurationInMillis":567,
+   "enQueueTime":"2016-03-16T09:02:26.492-0700",
+   "endTime":"2016-03-16T09:02:27.339-0700",
+   "id":"1",
+   "organization":"jenkins",
+   "pipeline":"pipeline1",
+   "result":"SUCCESS",
+   "runSummary":"stable",
+   "startTime":"2016-03-16T09:02:26.498-0700",
+   "state":"FINISHED",
+   "type":"WorkflowRun",
+   "commitId":null
+}
