@@ -243,7 +243,7 @@ buster.testCase('processor - _processArrayProperty', {
     var value = [ { _class: 'some.class' } ];
     this.stub(processor, 'processObject', function (response, definitions) {
       assert.equals(definition.properties.somekey.type, 'array');
-      assert.equals(definition.properties.somekey.items.$ref, '#/definitions/someclass');
+      assert.equals(definition.properties.somekey.items.$ref, '#/definitions/class');
       done();
     });
     processor._processArrayProperty('somekey', value, definition, {}, {});
