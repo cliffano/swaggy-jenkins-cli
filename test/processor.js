@@ -274,7 +274,7 @@ buster.testCase('processor - _processObjectProperty', {
   'should assign _class and log warning message when value is classless': function (done) {
     this.mockConsole.expects('warn').once().withExactArgs('Property %s does not have any _class property'.yellow, 'somekey');
     this.stub(processor, 'processObject', function (response, definitions) {
-      assert.equals(definition.properties.somekey.$ref, '#/definitions/someid_somekey');
+      assert.equals(definition.properties.somekey.$ref, '#/definitions/someidsomekey');
       done();
     });
     var definition = { id: 'someid', properties: {} };

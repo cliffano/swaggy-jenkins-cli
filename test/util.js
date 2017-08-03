@@ -10,6 +10,9 @@ buster.testCase('util - slug', {
   'should use class name when text contains package name': function () {
     assert.equals(util.slug('io.jenkisn.embedded.rest.SomeClass'), 'SomeClass');
   },
+  'should remove special charaters from slug value': function () {
+    assert.equals(util.slug('io.jenkisn.embedded.rest.SomeClass__link'), 'SomeClasslink');
+  },
   'should remove method prefix when text contains method prefix': function () {
     assert.equals(util.slug('getSomeClass'), 'SomeClass');
   },
