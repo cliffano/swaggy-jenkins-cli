@@ -5,14 +5,14 @@ Link:
       type: string
     href:
       type: string
-ExtensionClassContainerImpl$1__links:
+ExtensionClassContainerImpl1links:
   type: object
   properties:
     self:
       $ref: '#/definitions/Link'
     _class:
       type: string
-ExtensionClassImpl__links:
+ExtensionClassImpllinks:
   type: object
   properties:
     self:
@@ -25,12 +25,12 @@ ExtensionClassImpl:
     _class:
       type: string
     _links:
-      $ref: '#/definitions/ExtensionClassImpl__links'
+      $ref: '#/definitions/ExtensionClassImpllinks'
     classes:
       type: array
       items:
         type: string
-ExtensionClassContainerImpl$1_map:
+ExtensionClassContainerImpl1map:
   type: object
   properties:
     io.jenkins.blueocean.service.embedded.rest.PipelineImpl:
@@ -39,15 +39,15 @@ ExtensionClassContainerImpl$1_map:
       $ref: '#/definitions/ExtensionClassImpl'
     _class:
       type: string
-ExtensionClassContainerImpl$1:
+ExtensionClassContainerImpl1:
   type: object
   properties:
     _class:
       type: string
     _links:
-      $ref: '#/definitions/ExtensionClassContainerImpl$1__links'
+      $ref: '#/definitions/ExtensionClassContainerImpl1links'
     map:
-      $ref: '#/definitions/ExtensionClassContainerImpl$1_map'
+      $ref: '#/definitions/ExtensionClassContainerImpl1map'
 ClassesByClass:
   type: object
   properties:
@@ -110,7 +110,7 @@ PipelineImpl:
     weatherScore:
       type: integer
     _links:
-      $ref: '#/definitions/PipelineImpl__links'
+      $ref: '#/definitions/PipelineImpllinks'
 Organisation:
   type: object
   properties:
@@ -122,7 +122,7 @@ Organisations:
   type: array
   items:
     $ref: '#/definitions/Organisation'
-Pipeline_latestRunartifacts:
+PipelinelatestRunartifacts:
   type: object
   properties:
     name:
@@ -133,13 +133,13 @@ Pipeline_latestRunartifacts:
       type: string
     _class:
       type: string
-Pipeline_latestRun:
+PipelinelatestRun:
   type: object
   properties:
     artifacts:
       type: array
       items:
-        $ref: '#/definitions/Pipeline_latestRunartifacts'
+        $ref: '#/definitions/PipelinelatestRunartifacts'
     durationInMillis:
       type: integer
     estimatedDurationInMillis:
@@ -186,7 +186,7 @@ Pipeline:
     estimatedDurationInMillis:
       type: integer
     latestRun:
-      $ref: '#/definitions/Pipeline_latestRun'
+      $ref: '#/definitions/PipelinelatestRun'
 PipelineActivityartifacts:
   type: object
   properties:
@@ -259,7 +259,7 @@ StringParameterDefinition:
       type: string
     type:
       type: string
-BranchImpl_permissions:
+BranchImplpermissions:
   type: object
   properties:
     create:
@@ -294,16 +294,16 @@ BranchImpl:
       items:
         $ref: '#/definitions/StringParameterDefinition'
     permissions:
-      $ref: '#/definitions/BranchImpl_permissions'
+      $ref: '#/definitions/BranchImplpermissions'
     weatherScore:
       type: integer
     pullRequest:
       type: string
     _links:
-      $ref: '#/definitions/BranchImpl__links'
+      $ref: '#/definitions/BranchImpllinks'
     latestRun:
       $ref: '#/definitions/PipelineRunImpl'
-PipelineBranchesitem_latestRun:
+PipelineBranchesitemlatestRun:
   type: object
   properties:
     durationInMillis:
@@ -334,18 +334,18 @@ PipelineBranchesitem_latestRun:
       type: string
     _class:
       type: string
-PipelineBranchesitem_pullRequest__links:
+PipelineBranchesitempullRequestlinks:
   type: object
   properties:
     self:
       type: string
     _class:
       type: string
-PipelineBranchesitem_pullRequest:
+PipelineBranchesitempullRequest:
   type: object
   properties:
     _links:
-      $ref: '#/definitions/PipelineBranchesitem_pullRequest__links'
+      $ref: '#/definitions/PipelineBranchesitempullRequestlinks'
     author:
       type: string
     id:
@@ -368,11 +368,11 @@ PipelineBranchesitem:
     weatherScore:
       type: integer
     latestRun:
-      $ref: '#/definitions/PipelineBranchesitem_latestRun'
+      $ref: '#/definitions/PipelineBranchesitemlatestRun'
     organization:
       type: string
     pullRequest:
-      $ref: '#/definitions/PipelineBranchesitem_pullRequest'
+      $ref: '#/definitions/PipelineBranchesitempullRequest'
     totalNumberOfPullRequests:
       type: integer
     _class:
@@ -381,14 +381,14 @@ PipelineBranches:
   type: array
   items:
     $ref: '#/definitions/PipelineBranchesitem'
-FavoriteImpl__links:
+FavoriteImpllinks:
   type: object
   properties:
     self:
       $ref: '#/definitions/Link'
     _class:
       type: string
-PipelineImpl__links:
+PipelineImpllinks:
   type: object
   properties:
     runs:
@@ -407,7 +407,7 @@ FavoriteImpl:
     _class:
       type: string
     _links:
-      $ref: '#/definitions/FavoriteImpl__links'
+      $ref: '#/definitions/FavoriteImpllinks'
     item:
       $ref: '#/definitions/PipelineImpl'
 PipelineFolderImpl:
@@ -490,7 +490,7 @@ PipelineRun:
       type: string
     commitId:
       type: string
-PipelineStepImpl__links:
+PipelineStepImpllinks:
   type: object
   properties:
     self:
@@ -499,7 +499,7 @@ PipelineStepImpl__links:
       $ref: '#/definitions/Link'
     _class:
       type: string
-InputStepImpl__links:
+InputStepImpllinks:
   type: object
   properties:
     self:
@@ -512,7 +512,7 @@ InputStepImpl:
     _class:
       type: string
     _links:
-      $ref: '#/definitions/InputStepImpl__links'
+      $ref: '#/definitions/InputStepImpllinks'
     id:
       type: string
     message:
@@ -531,7 +531,7 @@ PipelineStepImpl:
     _class:
       type: string
     _links:
-      $ref: '#/definitions/PipelineStepImpl__links'
+      $ref: '#/definitions/PipelineStepImpllinks'
     displayName:
       type: string
     durationInMillis:
@@ -609,7 +609,7 @@ Pipelines:
   type: array
   items:
     $ref: '#/definitions/Pipeline'
-GithubScm__links:
+GithubScmlinks:
   type: object
   properties:
     self:
@@ -622,7 +622,7 @@ GithubScm:
     _class:
       type: string
     _links:
-      $ref: '#/definitions/GithubScm__links'
+      $ref: '#/definitions/GithubScmlinks'
     credentialId:
       type: string
     id:
@@ -655,28 +655,28 @@ GithubFile:
       $ref: '#/definitions/GithubContent'
     _class:
       type: string
-GithubRespositoryContainer__links:
+GithubRespositoryContainerlinks:
   type: object
   properties:
     self:
       $ref: '#/definitions/Link'
     _class:
       type: string
-GithubRepositories__links:
+GithubRepositorieslinks:
   type: object
   properties:
     self:
       $ref: '#/definitions/Link'
     _class:
       type: string
-GithubRepository__links:
+GithubRepositorylinks:
   type: object
   properties:
     self:
       $ref: '#/definitions/Link'
     _class:
       type: string
-GithubRepository_permissions:
+GithubRepositorypermissions:
   type: object
   properties:
     admin:
@@ -693,7 +693,7 @@ GithubRepository:
     _class:
       type: string
     _links:
-      $ref: '#/definitions/GithubRepository__links'
+      $ref: '#/definitions/GithubRepositorylinks'
     defaultBranch:
       type: string
     description:
@@ -701,7 +701,7 @@ GithubRepository:
     name:
       type: string
     permissions:
-      $ref: '#/definitions/GithubRepository_permissions'
+      $ref: '#/definitions/GithubRepositorypermissions'
     private:
       type: boolean
     fullName:
@@ -712,7 +712,7 @@ GithubRepositories:
     _class:
       type: string
     _links:
-      $ref: '#/definitions/GithubRepositories__links'
+      $ref: '#/definitions/GithubRepositorieslinks'
     items:
       type: array
       items:
@@ -729,10 +729,10 @@ GithubRespositoryContainer:
     _class:
       type: string
     _links:
-      $ref: '#/definitions/GithubRespositoryContainer__links'
+      $ref: '#/definitions/GithubRespositoryContainerlinks'
     repositories:
       $ref: '#/definitions/GithubRepositories'
-GithubOrganization__links:
+GithubOrganizationlinks:
   type: object
   properties:
     repositories:
@@ -747,7 +747,7 @@ GithubOrganization:
     _class:
       type: string
     _links:
-      $ref: '#/definitions/GithubOrganization__links'
+      $ref: '#/definitions/GithubOrganizationlinks'
     jenkinsOrganizationPipeline:
       type: boolean
     name:
@@ -769,7 +769,7 @@ User:
       type: string
     name:
       type: string
-BranchImpl__links:
+BranchImpllinks:
   type: object
   properties:
     self:
@@ -782,7 +782,7 @@ BranchImpl__links:
       $ref: '#/definitions/Link'
     _class:
       type: string
-PipelineRunImpl__links:
+PipelineRunImpllinks:
   type: object
   properties:
     nodes:
@@ -803,7 +803,7 @@ PipelineRunImpl:
     _class:
       type: string
     _links:
-      $ref: '#/definitions/PipelineRunImpl__links'
+      $ref: '#/definitions/PipelineRunImpllinks'
     durationInMillis:
       type: integer
     enQueueTime:
