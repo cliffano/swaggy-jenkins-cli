@@ -1,57 +1,54 @@
-iojenkinsblueoceanresthalLink:
+Link:
   type: object
   properties:
     _class:
       type: string
     href:
       type: string
-iojenkinsblueoceanserviceembeddedrestExtensionClassContainerImpl1__links:
+ExtensionClassContainerImpl$1__links:
   type: object
   properties:
     self:
-      $ref: '#/definitions/iojenkinsblueoceanresthalLink'
+      $ref: '#/definitions/Link'
     _class:
       type: string
-iojenkinsblueoceanserviceembeddedrestExtensionClassImpl__links:
+ExtensionClassImpl__links:
   type: object
   properties:
     self:
-      $ref: '#/definitions/iojenkinsblueoceanresthalLink'
+      $ref: '#/definitions/Link'
     _class:
       type: string
-iojenkinsblueoceanserviceembeddedrestExtensionClassImpl:
+ExtensionClassImpl:
   type: object
   properties:
     _class:
       type: string
     _links:
-      $ref: >-
-        #/definitions/iojenkinsblueoceanserviceembeddedrestExtensionClassImpl__links
+      $ref: '#/definitions/ExtensionClassImpl__links'
     classes:
       type: array
       items:
         type: string
-iojenkinsblueoceanserviceembeddedrestExtensionClassContainerImpl1_map:
+ExtensionClassContainerImpl$1_map:
   type: object
   properties:
     io.jenkins.blueocean.service.embedded.rest.PipelineImpl:
-      $ref: '#/definitions/iojenkinsblueoceanserviceembeddedrestExtensionClassImpl'
+      $ref: '#/definitions/ExtensionClassImpl'
     io.jenkins.blueocean.service.embedded.rest.MultiBranchPipelineImpl:
-      $ref: '#/definitions/iojenkinsblueoceanserviceembeddedrestExtensionClassImpl'
+      $ref: '#/definitions/ExtensionClassImpl'
     _class:
       type: string
-iojenkinsblueoceanserviceembeddedrestExtensionClassContainerImpl1:
+ExtensionClassContainerImpl$1:
   type: object
   properties:
     _class:
       type: string
     _links:
-      $ref: >-
-        #/definitions/iojenkinsblueoceanserviceembeddedrestExtensionClassContainerImpl1__links
+      $ref: '#/definitions/ExtensionClassContainerImpl$1__links'
     map:
-      $ref: >-
-        #/definitions/iojenkinsblueoceanserviceembeddedrestExtensionClassContainerImpl1_map
-getClassesByClass:
+      $ref: '#/definitions/ExtensionClassContainerImpl$1_map'
+ClassesByClass:
   type: object
   properties:
     classes:
@@ -60,7 +57,7 @@ getClassesByClass:
         type: string
     _class:
       type: string
-getMultibranchPipeline:
+MultibranchPipeline:
   type: object
   properties:
     displayName:
@@ -93,7 +90,7 @@ getMultibranchPipeline:
       type: integer
     _class:
       type: string
-iojenkinsblueoceanserviceembeddedrestPipelineImpl:
+PipelineImpl:
   type: object
   properties:
     _class:
@@ -113,19 +110,19 @@ iojenkinsblueoceanserviceembeddedrestPipelineImpl:
     weatherScore:
       type: integer
     _links:
-      $ref: '#/definitions/iojenkinsblueoceanserviceembeddedrestPipelineImpl__links'
-swaggyjenkinsOrganisation:
+      $ref: '#/definitions/PipelineImpl__links'
+Organisation:
   type: object
   properties:
     _class:
       type: string
     name:
       type: string
-getOrganisations:
+Organisations:
   type: array
   items:
-    $ref: '#/definitions/swaggyjenkinsOrganisation'
-swaggyjenkinsPipeline_latestRunartifacts:
+    $ref: '#/definitions/Organisation'
+Pipeline_latestRunartifacts:
   type: object
   properties:
     name:
@@ -136,13 +133,13 @@ swaggyjenkinsPipeline_latestRunartifacts:
       type: string
     _class:
       type: string
-swaggyjenkinsPipeline_latestRun:
+Pipeline_latestRun:
   type: object
   properties:
     artifacts:
       type: array
       items:
-        $ref: '#/definitions/swaggyjenkinsPipeline_latestRunartifacts'
+        $ref: '#/definitions/Pipeline_latestRunartifacts'
     durationInMillis:
       type: integer
     estimatedDurationInMillis:
@@ -171,7 +168,7 @@ swaggyjenkinsPipeline_latestRun:
       type: string
     _class:
       type: string
-swaggyjenkinsPipeline:
+Pipeline:
   type: object
   properties:
     _class:
@@ -189,8 +186,8 @@ swaggyjenkinsPipeline:
     estimatedDurationInMillis:
       type: integer
     latestRun:
-      $ref: '#/definitions/swaggyjenkinsPipeline_latestRun'
-swaggyjenkinsPipelineActivityartifacts:
+      $ref: '#/definitions/Pipeline_latestRun'
+PipelineActivityartifacts:
   type: object
   properties:
     name:
@@ -201,7 +198,7 @@ swaggyjenkinsPipelineActivityartifacts:
       type: string
     _class:
       type: string
-swaggyjenkinsPipelineActivity:
+PipelineActivity:
   type: object
   properties:
     _class:
@@ -209,7 +206,7 @@ swaggyjenkinsPipelineActivity:
     artifacts:
       type: array
       items:
-        $ref: '#/definitions/swaggyjenkinsPipelineActivityartifacts'
+        $ref: '#/definitions/PipelineActivityartifacts'
     durationInMillis:
       type: integer
     estimatedDurationInMillis:
@@ -236,11 +233,11 @@ swaggyjenkinsPipelineActivity:
       type: string
     commitId:
       type: string
-getPipelineActivities:
+PipelineActivities:
   type: array
   items:
-    $ref: '#/definitions/swaggyjenkinsPipelineActivity'
-hudsonmodelStringParameterValue:
+    $ref: '#/definitions/PipelineActivity'
+StringParameterValue:
   type: object
   properties:
     _class:
@@ -249,20 +246,20 @@ hudsonmodelStringParameterValue:
       type: string
     value:
       type: string
-hudsonmodelStringParameterDefinition:
+StringParameterDefinition:
   type: object
   properties:
     _class:
       type: string
     defaultParameterValue:
-      $ref: '#/definitions/hudsonmodelStringParameterValue'
+      $ref: '#/definitions/StringParameterValue'
     description:
       type: string
     name:
       type: string
     type:
       type: string
-iojenkinsblueoceanrestimplpipelineBranchImpl_permissions:
+BranchImpl_permissions:
   type: object
   properties:
     create:
@@ -275,7 +272,7 @@ iojenkinsblueoceanrestimplpipelineBranchImpl_permissions:
       type: boolean
     _class:
       type: string
-iojenkinsblueoceanrestimplpipelineBranchImpl:
+BranchImpl:
   type: object
   properties:
     _class:
@@ -295,14 +292,18 @@ iojenkinsblueoceanrestimplpipelineBranchImpl:
     parameters:
       type: array
       items:
-        $ref: '#/definitions/hudsonmodelStringParameterDefinition'
+        $ref: '#/definitions/StringParameterDefinition'
     permissions:
-      $ref: '#/definitions/iojenkinsblueoceanrestimplpipelineBranchImpl_permissions'
+      $ref: '#/definitions/BranchImpl_permissions'
     weatherScore:
       type: integer
     pullRequest:
       type: string
-getPipelineBranchesitem_latestRun:
+    _links:
+      $ref: '#/definitions/BranchImpl__links'
+    latestRun:
+      $ref: '#/definitions/PipelineRunImpl'
+PipelineBranchesitem_latestRun:
   type: object
   properties:
     durationInMillis:
@@ -333,18 +334,18 @@ getPipelineBranchesitem_latestRun:
       type: string
     _class:
       type: string
-getPipelineBranchesitem_pullRequest__links:
+PipelineBranchesitem_pullRequest__links:
   type: object
   properties:
     self:
       type: string
     _class:
       type: string
-getPipelineBranchesitem_pullRequest:
+PipelineBranchesitem_pullRequest:
   type: object
   properties:
     _links:
-      $ref: '#/definitions/getPipelineBranchesitem_pullRequest__links'
+      $ref: '#/definitions/PipelineBranchesitem_pullRequest__links'
     author:
       type: string
     id:
@@ -355,7 +356,7 @@ getPipelineBranchesitem_pullRequest:
       type: string
     _class:
       type: string
-getPipelineBranchesitem:
+PipelineBranchesitem:
   type: object
   properties:
     displayName:
@@ -367,49 +368,49 @@ getPipelineBranchesitem:
     weatherScore:
       type: integer
     latestRun:
-      $ref: '#/definitions/getPipelineBranchesitem_latestRun'
+      $ref: '#/definitions/PipelineBranchesitem_latestRun'
     organization:
       type: string
     pullRequest:
-      $ref: '#/definitions/getPipelineBranchesitem_pullRequest'
+      $ref: '#/definitions/PipelineBranchesitem_pullRequest'
     totalNumberOfPullRequests:
       type: integer
     _class:
       type: string
-getPipelineBranches:
+PipelineBranches:
   type: array
   items:
-    $ref: '#/definitions/getPipelineBranchesitem'
-iojenkinsblueoceanserviceembeddedrestFavoriteImpl__links:
+    $ref: '#/definitions/PipelineBranchesitem'
+FavoriteImpl__links:
   type: object
   properties:
     self:
-      $ref: '#/definitions/iojenkinsblueoceanresthalLink'
+      $ref: '#/definitions/Link'
     _class:
       type: string
-iojenkinsblueoceanserviceembeddedrestPipelineImpl__links:
+PipelineImpl__links:
   type: object
   properties:
     runs:
-      $ref: '#/definitions/iojenkinsblueoceanresthalLink'
+      $ref: '#/definitions/Link'
     self:
-      $ref: '#/definitions/iojenkinsblueoceanresthalLink'
+      $ref: '#/definitions/Link'
     queue:
-      $ref: '#/definitions/iojenkinsblueoceanresthalLink'
+      $ref: '#/definitions/Link'
     actions:
-      $ref: '#/definitions/iojenkinsblueoceanresthalLink'
+      $ref: '#/definitions/Link'
     _class:
       type: string
-iojenkinsblueoceanserviceembeddedrestFavoriteImpl:
+FavoriteImpl:
   type: object
   properties:
     _class:
       type: string
     _links:
-      $ref: '#/definitions/iojenkinsblueoceanserviceembeddedrestFavoriteImpl__links'
+      $ref: '#/definitions/FavoriteImpl__links'
     item:
-      $ref: '#/definitions/iojenkinsblueoceanserviceembeddedrestPipelineImpl'
-iojenkinsblueoceanserviceembeddedrestPipelineFolderImpl:
+      $ref: '#/definitions/PipelineImpl'
+PipelineFolderImpl:
   type: object
   properties:
     _class:
@@ -426,7 +427,7 @@ iojenkinsblueoceanserviceembeddedrestPipelineFolderImpl:
       type: integer
     numberOfPipelines:
       type: integer
-iojenkinsblueoceanserviceembeddedrestQueueItemImpl:
+QueueItemImpl:
   type: object
   properties:
     _class:
@@ -439,11 +440,11 @@ iojenkinsblueoceanserviceembeddedrestQueueItemImpl:
       type: string
     queuedTime:
       type: integer
-getPipelineQueue:
+PipelineQueue:
   type: array
   items:
-    $ref: '#/definitions/iojenkinsblueoceanserviceembeddedrestQueueItemImpl'
-swaggyjenkinsPipelineRunartifacts:
+    $ref: '#/definitions/QueueItemImpl'
+PipelineRunartifacts:
   type: object
   properties:
     name:
@@ -454,7 +455,7 @@ swaggyjenkinsPipelineRunartifacts:
       type: string
     _class:
       type: string
-swaggyjenkinsPipelineRun:
+PipelineRun:
   type: object
   properties:
     _class:
@@ -462,7 +463,7 @@ swaggyjenkinsPipelineRun:
     artifacts:
       type: array
       items:
-        $ref: '#/definitions/swaggyjenkinsPipelineRunartifacts'
+        $ref: '#/definitions/PipelineRunartifacts'
     durationInMillis:
       type: integer
     estimatedDurationInMillis:
@@ -489,29 +490,29 @@ swaggyjenkinsPipelineRun:
       type: string
     commitId:
       type: string
-iojenkinsblueoceanrestimplpipelinePipelineStepImpl__links:
+PipelineStepImpl__links:
   type: object
   properties:
     self:
-      $ref: '#/definitions/iojenkinsblueoceanresthalLink'
+      $ref: '#/definitions/Link'
     actions:
-      $ref: '#/definitions/iojenkinsblueoceanresthalLink'
+      $ref: '#/definitions/Link'
     _class:
       type: string
-iojenkinsblueoceanrestimplpipelineInputStepImpl__links:
+InputStepImpl__links:
   type: object
   properties:
     self:
-      $ref: '#/definitions/iojenkinsblueoceanresthalLink'
+      $ref: '#/definitions/Link'
     _class:
       type: string
-iojenkinsblueoceanrestimplpipelineInputStepImpl:
+InputStepImpl:
   type: object
   properties:
     _class:
       type: string
     _links:
-      $ref: '#/definitions/iojenkinsblueoceanrestimplpipelineInputStepImpl__links'
+      $ref: '#/definitions/InputStepImpl__links'
     id:
       type: string
     message:
@@ -521,16 +522,16 @@ iojenkinsblueoceanrestimplpipelineInputStepImpl:
     parameters:
       type: array
       items:
-        $ref: '#/definitions/hudsonmodelStringParameterDefinition'
+        $ref: '#/definitions/StringParameterDefinition'
     submitter:
       type: string
-iojenkinsblueoceanrestimplpipelinePipelineStepImpl:
+PipelineStepImpl:
   type: object
   properties:
     _class:
       type: string
     _links:
-      $ref: '#/definitions/iojenkinsblueoceanrestimplpipelinePipelineStepImpl__links'
+      $ref: '#/definitions/PipelineStepImpl__links'
     displayName:
       type: string
     durationInMillis:
@@ -538,25 +539,25 @@ iojenkinsblueoceanrestimplpipelinePipelineStepImpl:
     id:
       type: string
     input:
-      $ref: '#/definitions/iojenkinsblueoceanrestimplpipelineInputStepImpl'
+      $ref: '#/definitions/InputStepImpl'
     result:
       type: string
     startTime:
       type: string
     state:
       type: string
-getPipelineRunNodeSteps:
+PipelineRunNodeSteps:
   type: array
   items:
-    $ref: '#/definitions/iojenkinsblueoceanrestimplpipelinePipelineStepImpl'
-swaggyjenkinsPipelineRunNodeedges:
+    $ref: '#/definitions/PipelineStepImpl'
+PipelineRunNodeedges:
   type: object
   properties:
     id:
       type: string
     _class:
       type: string
-swaggyjenkinsPipelineRunNode:
+PipelineRunNode:
   type: object
   properties:
     _class:
@@ -568,7 +569,7 @@ swaggyjenkinsPipelineRunNode:
     edges:
       type: array
       items:
-        $ref: '#/definitions/swaggyjenkinsPipelineRunNodeedges'
+        $ref: '#/definitions/PipelineRunNodeedges'
     id:
       type: string
     result:
@@ -577,11 +578,11 @@ swaggyjenkinsPipelineRunNode:
       type: string
     state:
       type: string
-getPipelineRunNodes:
+PipelineRunNodes:
   type: array
   items:
-    $ref: '#/definitions/swaggyjenkinsPipelineRunNode'
-iojenkinsblueoceanrestmodelGenericResource:
+    $ref: '#/definitions/PipelineRunNode'
+GenericResource:
   type: object
   properties:
     _class:
@@ -596,40 +597,39 @@ iojenkinsblueoceanrestmodelGenericResource:
       type: string
     startTime:
       type: string
-getPipelineRunSteps:
+PipelineRunSteps:
   type: array
   items:
-    $ref: '#/definitions/iojenkinsblueoceanrestmodelGenericResource'
-getPipelineRuns:
+    $ref: '#/definitions/GenericResource'
+PipelineRuns:
   type: array
   items:
-    $ref: '#/definitions/swaggyjenkinsPipelineRun'
-getPipelines:
+    $ref: '#/definitions/PipelineRun'
+Pipelines:
   type: array
   items:
-    $ref: '#/definitions/swaggyjenkinsPipeline'
-iojenkinsblueoceanblueocean_github_pipelineGithubScm__links:
+    $ref: '#/definitions/Pipeline'
+GithubScm__links:
   type: object
   properties:
     self:
-      $ref: '#/definitions/iojenkinsblueoceanresthalLink'
+      $ref: '#/definitions/Link'
     _class:
       type: string
-iojenkinsblueoceanblueocean_github_pipelineGithubScm:
+GithubScm:
   type: object
   properties:
     _class:
       type: string
     _links:
-      $ref: >-
-        #/definitions/iojenkinsblueoceanblueocean_github_pipelineGithubScm__links
+      $ref: '#/definitions/GithubScm__links'
     credentialId:
       type: string
     id:
       type: string
     uri:
       type: string
-iojenkinsblueoceanblueocean_github_pipelineGithubContent:
+GithubContent:
   type: object
   properties:
     name:
@@ -648,35 +648,35 @@ iojenkinsblueoceanblueocean_github_pipelineGithubContent:
       type: string
     base64Data:
       type: string
-iojenkinsblueoceanblueocean_github_pipelineGithubFile:
+GithubFile:
   type: object
   properties:
     content:
-      $ref: '#/definitions/iojenkinsblueoceanblueocean_github_pipelineGithubContent'
+      $ref: '#/definitions/GithubContent'
     _class:
       type: string
-iojenkinsblueoceanblueocean_github_pipelineGithubRespositoryContainer__links:
+GithubRespositoryContainer__links:
   type: object
   properties:
     self:
-      $ref: '#/definitions/iojenkinsblueoceanresthalLink'
+      $ref: '#/definitions/Link'
     _class:
       type: string
-iojenkinsblueoceanblueocean_github_pipelineGithubRepositories__links:
+GithubRepositories__links:
   type: object
   properties:
     self:
-      $ref: '#/definitions/iojenkinsblueoceanresthalLink'
+      $ref: '#/definitions/Link'
     _class:
       type: string
-iojenkinsblueoceanblueocean_github_pipelineGithubRepository__links:
+GithubRepository__links:
   type: object
   properties:
     self:
-      $ref: '#/definitions/iojenkinsblueoceanresthalLink'
+      $ref: '#/definitions/Link'
     _class:
       type: string
-iojenkinsblueoceanblueocean_github_pipelineGithubRepository_permissions:
+GithubRepository_permissions:
   type: object
   properties:
     admin:
@@ -687,14 +687,13 @@ iojenkinsblueoceanblueocean_github_pipelineGithubRepository_permissions:
       type: boolean
     _class:
       type: string
-iojenkinsblueoceanblueocean_github_pipelineGithubRepository:
+GithubRepository:
   type: object
   properties:
     _class:
       type: string
     _links:
-      $ref: >-
-        #/definitions/iojenkinsblueoceanblueocean_github_pipelineGithubRepository__links
+      $ref: '#/definitions/GithubRepository__links'
     defaultBranch:
       type: string
     description:
@@ -702,69 +701,62 @@ iojenkinsblueoceanblueocean_github_pipelineGithubRepository:
     name:
       type: string
     permissions:
-      $ref: >-
-        #/definitions/iojenkinsblueoceanblueocean_github_pipelineGithubRepository_permissions
+      $ref: '#/definitions/GithubRepository_permissions'
     private:
       type: boolean
     fullName:
       type: string
-iojenkinsblueoceanblueocean_github_pipelineGithubRepositories:
+GithubRepositories:
   type: object
   properties:
     _class:
       type: string
     _links:
-      $ref: >-
-        #/definitions/iojenkinsblueoceanblueocean_github_pipelineGithubRepositories__links
+      $ref: '#/definitions/GithubRepositories__links'
     items:
       type: array
       items:
-        $ref: >-
-          #/definitions/iojenkinsblueoceanblueocean_github_pipelineGithubRepository
+        $ref: '#/definitions/GithubRepository'
     lastPage:
       type: integer
     nextPage:
       type: integer
     pageSize:
       type: integer
-iojenkinsblueoceanblueocean_github_pipelineGithubRespositoryContainer:
+GithubRespositoryContainer:
   type: object
   properties:
     _class:
       type: string
     _links:
-      $ref: >-
-        #/definitions/iojenkinsblueoceanblueocean_github_pipelineGithubRespositoryContainer__links
+      $ref: '#/definitions/GithubRespositoryContainer__links'
     repositories:
-      $ref: >-
-        #/definitions/iojenkinsblueoceanblueocean_github_pipelineGithubRepositories
-iojenkinsblueoceanblueocean_github_pipelineGithubOrganization__links:
+      $ref: '#/definitions/GithubRepositories'
+GithubOrganization__links:
   type: object
   properties:
     repositories:
-      $ref: '#/definitions/iojenkinsblueoceanresthalLink'
+      $ref: '#/definitions/Link'
     self:
-      $ref: '#/definitions/iojenkinsblueoceanresthalLink'
+      $ref: '#/definitions/Link'
     _class:
       type: string
-iojenkinsblueoceanblueocean_github_pipelineGithubOrganization:
+GithubOrganization:
   type: object
   properties:
     _class:
       type: string
     _links:
-      $ref: >-
-        #/definitions/iojenkinsblueoceanblueocean_github_pipelineGithubOrganization__links
+      $ref: '#/definitions/GithubOrganization__links'
     jenkinsOrganizationPipeline:
       type: boolean
     name:
       type: string
-getScmOrganisations:
+ScmOrganisations:
   type: array
   items:
-    $ref: >-
-      #/definitions/iojenkinsblueoceanblueocean_github_pipelineGithubOrganization
-swaggyjenkinsUser:
+    $ref: '#/definitions/GithubOrganization'
+User:
   type: object
   properties:
     _class:
@@ -777,42 +769,41 @@ swaggyjenkinsUser:
       type: string
     name:
       type: string
-iojenkinsblueoceanserviceembeddedrestBranchImpl__links:
+BranchImpl__links:
   type: object
   properties:
     self:
-      $ref: '#/definitions/iojenkinsblueoceanresthalLink'
+      $ref: '#/definitions/Link'
     actions:
-      $ref: '#/definitions/iojenkinsblueoceanresthalLink'
+      $ref: '#/definitions/Link'
     runs:
-      $ref: '#/definitions/iojenkinsblueoceanresthalLink'
+      $ref: '#/definitions/Link'
     queue:
-      $ref: '#/definitions/iojenkinsblueoceanresthalLink'
+      $ref: '#/definitions/Link'
     _class:
       type: string
-iojenkinsblueoceanserviceembeddedrestPipelineRunImpl__links:
+PipelineRunImpl__links:
   type: object
   properties:
     nodes:
-      $ref: '#/definitions/iojenkinsblueoceanresthalLink'
+      $ref: '#/definitions/Link'
     log:
-      $ref: '#/definitions/iojenkinsblueoceanresthalLink'
+      $ref: '#/definitions/Link'
     self:
-      $ref: '#/definitions/iojenkinsblueoceanresthalLink'
+      $ref: '#/definitions/Link'
     actions:
-      $ref: '#/definitions/iojenkinsblueoceanresthalLink'
+      $ref: '#/definitions/Link'
     steps:
-      $ref: '#/definitions/iojenkinsblueoceanresthalLink'
+      $ref: '#/definitions/Link'
     _class:
       type: string
-iojenkinsblueoceanserviceembeddedrestPipelineRunImpl:
+PipelineRunImpl:
   type: object
   properties:
     _class:
       type: string
     _links:
-      $ref: >-
-        #/definitions/iojenkinsblueoceanserviceembeddedrestPipelineRunImpl__links
+      $ref: '#/definitions/PipelineRunImpl__links'
     durationInMillis:
       type: integer
     enQueueTime:
@@ -839,34 +830,11 @@ iojenkinsblueoceanserviceembeddedrestPipelineRunImpl:
       type: string
     commitId:
       type: string
-iojenkinsblueoceanserviceembeddedrestBranchImpl:
-  type: object
-  properties:
-    _class:
-      type: string
-    _links:
-      $ref: '#/definitions/iojenkinsblueoceanserviceembeddedrestBranchImpl__links'
-    displayName:
-      type: string
-    estimatedDurationInMillis:
-      type: integer
-    fullName:
-      type: string
-    latestRun:
-      $ref: '#/definitions/iojenkinsblueoceanserviceembeddedrestPipelineRunImpl'
-    name:
-      type: string
-    organization:
-      type: string
-    weatherScore:
-      type: integer
-    pullRequest:
-      type: string
-getUserFavorites:
+UserFavorites:
   type: array
   items:
-    $ref: '#/definitions/iojenkinsblueoceanserviceembeddedrestFavoriteImpl'
-getUsers:
+    $ref: '#/definitions/FavoriteImpl'
+Users:
   type: array
   items:
-    $ref: '#/definitions/swaggyjenkinsUser'
+    $ref: '#/definitions/User'
