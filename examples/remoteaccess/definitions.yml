@@ -1,4 +1,4 @@
-hudsonmodelFreeStyleBuild:
+FreeStyleBuild:
   type: object
   properties:
     _class:
@@ -10,7 +10,7 @@ hudsonmodelFreeStyleBuild:
     actions:
       type: array
       items:
-        $ref: '#/definitions/hudsonmodelCauseAction'
+        $ref: '#/definitions/CauseAction'
     building:
       type: boolean
     description:
@@ -38,12 +38,12 @@ hudsonmodelFreeStyleBuild:
     builtOn:
       type: string
     changeSet:
-      $ref: '#/definitions/hudsonscmEmptyChangeLogSet'
-hudsonmodelHudsonMasterComputerexecutors:
+      $ref: '#/definitions/EmptyChangeLogSet'
+HudsonMasterComputerexecutors:
   type: object
   properties:
     currentExecutable:
-      $ref: '#/definitions/hudsonmodelFreeStyleBuild'
+      $ref: '#/definitions/FreeStyleBuild'
     idle:
       type: boolean
     likelyStuck:
@@ -54,12 +54,12 @@ hudsonmodelHudsonMasterComputerexecutors:
       type: integer
     _class:
       type: string
-hudsonmodelLabel1:
+Label1:
   type: object
   properties:
     _class:
       type: string
-hudsonnode_monitorsSwapSpaceMonitorMemoryUsage2:
+SwapSpaceMonitorMemoryUsage2:
   type: object
   properties:
     _class:
@@ -72,7 +72,7 @@ hudsonnode_monitorsSwapSpaceMonitorMemoryUsage2:
       type: integer
     totalSwapSpace:
       type: integer
-hudsonnode_monitorsDiskSpaceMonitorDescriptorDiskSpace:
+DiskSpaceMonitorDescriptorDiskSpace:
   type: object
   properties:
     _class:
@@ -83,7 +83,7 @@ hudsonnode_monitorsDiskSpaceMonitorDescriptorDiskSpace:
       type: string
     size:
       type: integer
-hudsonnode_monitorsResponseTimeMonitorData:
+ResponseTimeMonitorData:
   type: object
   properties:
     _class:
@@ -92,31 +92,31 @@ hudsonnode_monitorsResponseTimeMonitorData:
       type: integer
     average:
       type: integer
-hudsonutilClockDifference:
+ClockDifference:
   type: object
   properties:
     _class:
       type: string
     diff:
       type: integer
-hudsonmodelHudsonMasterComputer_monitorData:
+HudsonMasterComputermonitorData:
   type: object
   properties:
     hudson.node_monitors.SwapSpaceMonitor:
-      $ref: '#/definitions/hudsonnode_monitorsSwapSpaceMonitorMemoryUsage2'
+      $ref: '#/definitions/SwapSpaceMonitorMemoryUsage2'
     hudson.node_monitors.TemporarySpaceMonitor:
-      $ref: '#/definitions/hudsonnode_monitorsDiskSpaceMonitorDescriptorDiskSpace'
+      $ref: '#/definitions/DiskSpaceMonitorDescriptorDiskSpace'
     hudson.node_monitors.DiskSpaceMonitor:
-      $ref: '#/definitions/hudsonnode_monitorsDiskSpaceMonitorDescriptorDiskSpace'
+      $ref: '#/definitions/DiskSpaceMonitorDescriptorDiskSpace'
     hudson.node_monitors.ArchitectureMonitor:
       type: string
     hudson.node_monitors.ResponseTimeMonitor:
-      $ref: '#/definitions/hudsonnode_monitorsResponseTimeMonitorData'
+      $ref: '#/definitions/ResponseTimeMonitorData'
     hudson.node_monitors.ClockMonitor:
-      $ref: '#/definitions/hudsonutilClockDifference'
+      $ref: '#/definitions/ClockDifference'
     _class:
       type: string
-hudsonmodelHudsonMasterComputer:
+HudsonMasterComputer:
   type: object
   properties:
     _class:
@@ -126,7 +126,7 @@ hudsonmodelHudsonMasterComputer:
     executors:
       type: array
       items:
-        $ref: '#/definitions/hudsonmodelHudsonMasterComputerexecutors'
+        $ref: '#/definitions/HudsonMasterComputerexecutors'
     icon:
       type: string
     iconClassName:
@@ -138,11 +138,11 @@ hudsonmodelHudsonMasterComputer:
     launchSupported:
       type: boolean
     loadStatistics:
-      $ref: '#/definitions/hudsonmodelLabel1'
+      $ref: '#/definitions/Label1'
     manualLaunchAllowed:
       type: boolean
     monitorData:
-      $ref: '#/definitions/hudsonmodelHudsonMasterComputer_monitorData'
+      $ref: '#/definitions/HudsonMasterComputermonitorData'
     numExecutors:
       type: integer
     offline:
@@ -153,7 +153,7 @@ hudsonmodelHudsonMasterComputer:
       type: string
     temporarilyOffline:
       type: boolean
-hudsonmodelComputerSet:
+ComputerSet:
   type: object
   properties:
     _class:
@@ -163,12 +163,12 @@ hudsonmodelComputerSet:
     computer:
       type: array
       items:
-        $ref: '#/definitions/hudsonmodelHudsonMasterComputer'
+        $ref: '#/definitions/HudsonMasterComputer'
     displayName:
       type: string
     totalExecutors:
       type: integer
-hudsonsecuritycsrfDefaultCrumbIssuer:
+DefaultCrumbIssuer:
   type: object
   properties:
     _class:
@@ -177,12 +177,12 @@ hudsonsecuritycsrfDefaultCrumbIssuer:
       type: string
     crumbRequestField:
       type: string
-hudsonmodelHudsonassignedLabels:
+HudsonassignedLabels:
   type: object
   properties:
     _class:
       type: string
-hudsonmodelFreeStyleProject:
+FreeStyleProject:
   type: object
   properties:
     _class:
@@ -196,7 +196,7 @@ hudsonmodelFreeStyleProject:
     actions:
       type: array
       items:
-        $ref: '#/definitions/hudsonmodelFreeStyleProjectactions'
+        $ref: '#/definitions/FreeStyleProjectactions'
     description:
       type: string
     displayName:
@@ -212,27 +212,27 @@ hudsonmodelFreeStyleProject:
     builds:
       type: array
       items:
-        $ref: '#/definitions/hudsonmodelFreeStyleBuild'
+        $ref: '#/definitions/FreeStyleBuild'
     firstBuild:
-      $ref: '#/definitions/hudsonmodelFreeStyleBuild'
+      $ref: '#/definitions/FreeStyleBuild'
     healthReport:
       type: array
       items:
-        $ref: '#/definitions/hudsonmodelFreeStyleProjecthealthReport'
+        $ref: '#/definitions/FreeStyleProjecthealthReport'
     inQueue:
       type: boolean
     keepDependencies:
       type: boolean
     lastBuild:
-      $ref: '#/definitions/hudsonmodelFreeStyleBuild'
+      $ref: '#/definitions/FreeStyleBuild'
     lastCompletedBuild:
-      $ref: '#/definitions/hudsonmodelFreeStyleBuild'
+      $ref: '#/definitions/FreeStyleBuild'
     lastFailedBuild:
       type: string
     lastStableBuild:
-      $ref: '#/definitions/hudsonmodelFreeStyleBuild'
+      $ref: '#/definitions/FreeStyleBuild'
     lastSuccessfulBuild:
-      $ref: '#/definitions/hudsonmodelFreeStyleBuild'
+      $ref: '#/definitions/FreeStyleBuild'
     lastUnstableBuild:
       type: string
     lastUnsuccessfulBuild:
@@ -244,8 +244,8 @@ hudsonmodelFreeStyleProject:
     concurrentBuild:
       type: boolean
     scm:
-      $ref: '#/definitions/hudsonscmNullSCM'
-hudsonmodelAllView:
+      $ref: '#/definitions/NullSCM'
+AllView:
   type: object
   properties:
     _class:
@@ -254,12 +254,12 @@ hudsonmodelAllView:
       type: string
     url:
       type: string
-jenkinsmodelUnlabeledLoadStatistics:
+UnlabeledLoadStatistics:
   type: object
   properties:
     _class:
       type: string
-hudsonmodelHudson:
+Hudson:
   type: object
   properties:
     _class:
@@ -267,7 +267,7 @@ hudsonmodelHudson:
     assignedLabels:
       type: array
       items:
-        $ref: '#/definitions/hudsonmodelHudsonassignedLabels'
+        $ref: '#/definitions/HudsonassignedLabels'
     mode:
       type: string
     nodeDescription:
@@ -281,15 +281,15 @@ hudsonmodelHudson:
     jobs:
       type: array
       items:
-        $ref: '#/definitions/hudsonmodelFreeStyleProject'
+        $ref: '#/definitions/FreeStyleProject'
     primaryView:
-      $ref: '#/definitions/hudsonmodelAllView'
+      $ref: '#/definitions/AllView'
     quietingDown:
       type: boolean
     slaveAgentPort:
       type: integer
     unlabeledLoad:
-      $ref: '#/definitions/jenkinsmodelUnlabeledLoadStatistics'
+      $ref: '#/definitions/UnlabeledLoadStatistics'
     useCrumbs:
       type: boolean
     useSecurity:
@@ -297,13 +297,13 @@ hudsonmodelHudson:
     views:
       type: array
       items:
-        $ref: '#/definitions/hudsonmodelAllView'
-hudsonmodelFreeStyleProjectactions:
+        $ref: '#/definitions/AllView'
+FreeStyleProjectactions:
   type: object
   properties:
     _class:
       type: string
-hudsonmodelFreeStyleProjecthealthReport:
+FreeStyleProjecthealthReport:
   type: object
   properties:
     description:
@@ -316,12 +316,12 @@ hudsonmodelFreeStyleProjecthealthReport:
       type: integer
     _class:
       type: string
-hudsonscmNullSCM:
+NullSCM:
   type: object
   properties:
     _class:
       type: string
-hudsonmodelCauseUserIdCause:
+CauseUserIdCause:
   type: object
   properties:
     _class:
@@ -332,7 +332,7 @@ hudsonmodelCauseUserIdCause:
       type: string
     userName:
       type: string
-hudsonmodelCauseAction:
+CauseAction:
   type: object
   properties:
     _class:
@@ -340,15 +340,15 @@ hudsonmodelCauseAction:
     causes:
       type: array
       items:
-        $ref: '#/definitions/hudsonmodelCauseUserIdCause'
-hudsonscmEmptyChangeLogSet:
+        $ref: '#/definitions/CauseUserIdCause'
+EmptyChangeLogSet:
   type: object
   properties:
     _class:
       type: string
     kind:
       type: string
-hudsonmodelQueueBlockedItem:
+QueueBlockedItem:
   type: object
   properties:
     _class:
@@ -356,7 +356,7 @@ hudsonmodelQueueBlockedItem:
     actions:
       type: array
       items:
-        $ref: '#/definitions/hudsonmodelCauseAction'
+        $ref: '#/definitions/CauseAction'
     blocked:
       type: boolean
     buildable:
@@ -370,14 +370,14 @@ hudsonmodelQueueBlockedItem:
     stuck:
       type: boolean
     task:
-      $ref: '#/definitions/hudsonmodelFreeStyleProject'
+      $ref: '#/definitions/FreeStyleProject'
     url:
       type: string
     why:
       type: string
     buildableStartMilliseconds:
       type: integer
-hudsonmodelQueue:
+Queue:
   type: object
   properties:
     _class:
@@ -385,8 +385,8 @@ hudsonmodelQueue:
     items:
       type: array
       items:
-        $ref: '#/definitions/hudsonmodelQueueBlockedItem'
-hudsonmodelQueueLeftItem:
+        $ref: '#/definitions/QueueBlockedItem'
+QueueLeftItem:
   type: object
   properties:
     _class:
@@ -394,7 +394,7 @@ hudsonmodelQueueLeftItem:
     actions:
       type: array
       items:
-        $ref: '#/definitions/hudsonmodelCauseAction'
+        $ref: '#/definitions/CauseAction'
     blocked:
       type: boolean
     buildable:
@@ -408,7 +408,7 @@ hudsonmodelQueueLeftItem:
     stuck:
       type: boolean
     task:
-      $ref: '#/definitions/hudsonmodelFreeStyleProject'
+      $ref: '#/definitions/FreeStyleProject'
     url:
       type: string
     why:
@@ -416,8 +416,8 @@ hudsonmodelQueueLeftItem:
     cancelled:
       type: boolean
     executable:
-      $ref: '#/definitions/hudsonmodelFreeStyleBuild'
-hudsonmodelListView:
+      $ref: '#/definitions/FreeStyleBuild'
+ListView:
   type: object
   properties:
     _class:
@@ -427,7 +427,7 @@ hudsonmodelListView:
     jobs:
       type: array
       items:
-        $ref: '#/definitions/hudsonmodelFreeStyleProject'
+        $ref: '#/definitions/FreeStyleProject'
     name:
       type: string
     url:
