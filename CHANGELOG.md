@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Change changelog format to keep-a-changelog
 
+### Removed
+- Remove Travis CI usage
+
 ## 0.0.2 - 2017-08-04
 ### Fixed
 - Fix _class property shouldn't be excluded from being added to definition
