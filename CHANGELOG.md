@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Unreleased
 ### Changed
 - Change changelog format to keep-a-changelog
+- Replace lint type from jshint to eslint
+- Replace coverage from buster-istanbul to c8
+- Replace doc type from dox-foundation to jsdoc
 
 ### Removed
 - Remove Travis CI usage
