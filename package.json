@@ -1,5 +1,6 @@
 {
   "name": "swaggy-jenkins-cli",
+  "type": "module",
   "description": "Utility tool for Swaggy Jenkins library",
   "keywords": [
     "jenkins",
@@ -14,7 +15,7 @@
   ],
   "main": "./lib/jenkins",
   "bin": {
-    "swaggy-jenkins": "./bin/swaggy-jenkins"
+    "swaggy-jenkins": "./bin/swaggy-jenkins.js"
   },
   "preferGlobal": true,
   "repository": {
@@ -41,7 +42,7 @@
   },
   "scripts": {},
   "engines": {
-    "node": ">= 6.0.0"
+    "node": ">= 16.0.0"
   },
   "license": "MIT"
 }
